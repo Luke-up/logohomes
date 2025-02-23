@@ -52,42 +52,44 @@
     <header>
         <nav id="nav-main" itemscope itemtype="https://schema.org/SiteNavigationElement">
             <div id="logo">
-                <a href="https://www.logohomes.co.za/">
+                <a href="/">
                     <img src="./assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="eager"/>
                 </a>
             </div>
+            <div id="mobi-hamburger-open"><div>
             <ul id="menu-main-menu">
+                <div id="mobi-hamburger-close"></div>
                 <li>
                     <a href="/" aria-current="page"><span>Home</span></a>
                 </li>
                 <li>
-                    <a href="/about/"><span>About</span></a>
+                    <a href="/about"><span>About</span></a>
                 </li>
                 <li>
-                    <a href="/designing-your-timber-home/"><span>Designs</span></a>
+                    <a href="/designing-your-timber-home"><span>Designs</span></a>
                 </li>
                 <li>
-                    <a href="/faqs/"><span>FAQ</span></a>
+                    <a href="/faqs"><span>FAQ</span></a>
                 </li>
                 <li>
-                    <a href="/gallery-awards/"><span>Gallery &#038; Awards</span></a>
+                    <a href="/gallery-awards"><span>Gallery &#038; Awards</span></a>
                     <ul>
                         <li>
-                            <a href="/gallery-awards/finishes/"><span>Finishes</span></a>
+                            <a href="/gallery-awards/finishes"><span>Finishes</span></a>
                         </li>
                         <li>
-                            <a href="/gallery-awards/exteriors/"><span>Exteriors</span></a>
+                            <a href="/gallery-awards/exteriors"><span>Exteriors</span></a>
                         </li>
                         <li>
-                            <a href="/gallery-awards/interiors/"><span>Interiors</span></a>
+                            <a href="/gallery-awards/interiors"><span>Interiors</span></a>
                         </li>
                         <li>
-                            <a href="/gallery-awards/during-contruction/"><span>During construction</span></a>
+                            <a href="/gallery-awards/during-contruction"><span>During construction</span></a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="/get-in-touch/"><span>Contact Us</span></a>
+                    <a href="/get-in-touch"><span>Contact Us</span></a>
                 </li>
             </ul>
         </nav>

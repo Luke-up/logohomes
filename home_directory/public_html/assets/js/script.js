@@ -33,6 +33,19 @@ $(function () {
         prevArrow: $('.prev-arrow'),
         nextArrow: $('.next-arrow'),
     });
+
+    $("#mobi-hamburger-open").click(function() {
+        event.stopPropagation();
+        console.log("Hamburger clicked, adding 'active' class");
+        $("#menu-main-menu").addClass("active");
+    });
+    
+    $("#mobi-hamburger-close").click(function() {
+        event.stopPropagation();
+        console.log("Close clicked, removing 'active' class");
+        $("#menu-main-menu").removeClass("active");
+    });
+    
 });
 
   const animationObserver = new IntersectionObserver((entries, observer) => {
