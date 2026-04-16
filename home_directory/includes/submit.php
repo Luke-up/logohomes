@@ -1,12 +1,12 @@
-<?php include 'includes/functions.php'; ?>
+<?php require_once __DIR__ . '/functions.php'; ?>
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Manually include PHPMailer files
-require 'includes/phpmailer/src/Exception.php';
-require 'includes/phpmailer/src/PHPMailer.php';
-require 'includes/phpmailer/src/SMTP.php';
+require_once __DIR__ . '/phpmailer/src/Exception.php';
+require_once __DIR__ . '/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/phpmailer/src/SMTP.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = htmlspecialchars($_POST['name']);

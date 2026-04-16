@@ -2,18 +2,10 @@
 <h1>Website Sitemap</h1>
 <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/about/">About</a></li>
-    <li><a href="/designing-your-timber-home/">Designs</a></li>
-    <li><a href="/faqs/">FAQ</a></li>
-    <li>
-        <a href="/gallery-awards/">Gallery &amp; Awards</a>
-        <ul>
-            <li><a href="/gallery-awards/finishes/">Finishes</a></li>
-            <li><a href="/gallery-awards/exteriors/">Exteriors</a></li>
-            <li><a href="/gallery-awards/interiors/">Interiors</a></li>
-            <li><a href="/gallery-awards/during-contruction/">During Construction</a></li>
-        </ul>
-    </li>
-    <li><a href="/get-in-touch/">Contact Us</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/designs">Designs</a></li>
+    <li><a href="/faq">FAQ</a></li>
+    <li><a href="/gallery-awards">Gallery &amp; Awards</a></li>
+    <li><a href="/contact">Contact</a></li>
 </ul>
 <?php include '../includes/footer.php'; ?>
