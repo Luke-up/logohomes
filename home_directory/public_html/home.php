@@ -50,7 +50,7 @@
     <h1>Logo Homes</h1>
     <p>Logo Homes was established in 1993 and has grown from strength to strength, winning awards for both the design and construction of high quality homes.</p>
     <div class="btn-container">
-        <a class="btn" href="profile">See More</a>
+        <a class="btn" href="/about">See More</a>
     </div>
 </div>
 

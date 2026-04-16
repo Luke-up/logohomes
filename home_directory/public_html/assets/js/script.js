@@ -119,3 +119,36 @@ $(function () {
         }
     });
 });
+
+(function () {
+    var list = document.querySelector('.content-page--faq .faq-list');
+    if (!list) {
+        return;
+    }
+    list.addEventListener('click', function (e) {
+        var btn = e.target.closest('.faq-q');
+        if (!btn || !list.contains(btn)) {
+            return;
+        }
+        var panelId = btn.getAttribute('aria-controls');
+        var panel = panelId ? document.getElementById(panelId) : null;
+        if (!panel) {
+            return;
+        }
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        list.querySelectorAll('.faq-q').forEach(function (b) {
+            b.setAttribute('aria-expanded', 'false');
+            var pid = b.getAttribute('aria-controls');
+            if (pid) {
+                var p = document.getElementById(pid);
+                if (p) {
+                    p.hidden = true;
+                }
+            }
+        });
+        if (!isOpen) {
+            btn.setAttribute('aria-expanded', 'true');
+            panel.hidden = false;
+        }
+    });
+})();

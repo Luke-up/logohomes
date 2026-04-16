@@ -1,3 +1,9 @@
+<?php
+$currentPath = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+if ($currentPath === '') {
+    $currentPath = 'home';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,41 +62,45 @@
                     <img src="./assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="eager"/>
                 </a>
             </div>
-            <div id="mobi-hamburger-open"><div>
-            <ul id="menu-main-menu">
-                <div id="mobi-hamburger-close"></div>
-                <li>
-                    <a href="/" aria-current="page"><span>Home</span></a>
-                </li>
-                <li>
-                    <a href="/about"><span>About</span></a>
-                </li>
-                <li>
-                    <a href="/designing-your-timber-home"><span>Designs</span></a>
-                </li>
-                <li>
-                    <a href="/faqs"><span>FAQ</span></a>
-                </li>
-                <li>
-                    <a href="/gallery-awards"><span>Gallery &#038; Awards</span></a>
-                    <ul>
-                        <li>
-                            <a href="/gallery-awards/finishes"><span>Finishes</span></a>
-                        </li>
-                        <li>
-                            <a href="/gallery-awards/exteriors"><span>Exteriors</span></a>
-                        </li>
-                        <li>
-                            <a href="/gallery-awards/interiors"><span>Interiors</span></a>
-                        </li>
-                        <li>
-                            <a href="/gallery-awards/during-contruction"><span>During construction</span></a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="/get-in-touch"><span>Contact Us</span></a>
-                </li>
-            </ul>
+            <div id="mobi-hamburger-open"></div>
+            <div class="nav-links-col">
+                <div class="header-contact-row" aria-label="Contact information">
+                    <a href="tel:+27218454606" aria-label="Call Logo Homes">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M22 16.92V20a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3.09a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 10a16 16 0 0 0 6 6l1.36-1.36a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        +27 21 845 4606
+                    </a>
+                    <span class="separator" aria-hidden="true">|</span>
+                    <a href="mailto:logo@icon.co.za" aria-label="Email Logo Homes">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="m22 6-10 7L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        logo@icon.co.za
+                    </a>
+                </div>
+                <ul id="menu-main-menu">
+                    <div id="mobi-hamburger-close"></div>
+                    <li>
+                        <a href="/" <?php if ($currentPath === 'home') { echo 'aria-current="page" class="is-active"'; } ?>><span>Home</span></a>
+                    </li>
+                    <li>
+                        <a href="/about" <?php if ($currentPath === 'about') { echo 'aria-current="page" class="is-active"'; } ?>><span>About</span></a>
+                    </li>
+                    <li>
+                        <a href="/designs" <?php if ($currentPath === 'designs') { echo 'aria-current="page" class="is-active"'; } ?>><span>Designs</span></a>
+                    </li>
+                    <li>
+                        <a href="/faq" <?php if ($currentPath === 'faq') { echo 'aria-current="page" class="is-active"'; } ?>><span>FAQ</span></a>
+                    </li>
+                    <li>
+                        <a href="/gallery-awards" <?php if ($currentPath === 'gallery-awards') { echo 'aria-current="page" class="is-active"'; } ?>><span>Gallery &#038; Awards</span></a>
+                    </li>
+                    <li>
+                        <a href="/contact" <?php if ($currentPath === 'contact') { echo 'aria-current="page" class="is-active"'; } ?>><span>Contact</span></a>
+                    </li>
+                </ul>
+            </div>
         </nav>
     </header>
