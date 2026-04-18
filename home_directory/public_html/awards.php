@@ -1,0 +1,45 @@
+<?php
+require_once __DIR__ . '/../includes/projects-data.php';
+require_once __DIR__ . '/../includes/gallery-helpers.php';
+
+$projects = logohomes_projects();
+?>
+<?php include '../includes/header.php'; ?>
+
+<main class="content-page content-page--gallery content-page--awards">
+    <section class="page-hero">
+        <h1>Awards</h1>
+    </section>
+
+    <nav class="page-section" aria-label="Awarded projects">
+        <h2 class="visually-hidden">Featured projects</h2>
+        <ul class="awards-project-grid">
+            <?php foreach ($projects as $project) :
+                $thumb = logohomes_project_feature_thumb_web($project['slug']);
+                ?>
+            <li class="awards-project-grid-item">
+                <a class="awards-project-card" href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                    <div class="listing-slide awards-listing-slide">
+                        <?php if ($thumb !== null) : ?>
+                        <img src="<?php echo htmlspecialchars($thumb, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" width="640" height="360" loading="lazy" decoding="async">
+                        <?php else : ?>
+                        <span class="awards-listing-slide-placeholder" aria-hidden="true">
+                            <span class="awards-listing-slide-placeholder-label">Image coming soon</span>
+                        </span>
+                        <?php endif; ?>
+                        <div class="text">
+                            <p><?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?></p>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </nav>
+
+    <section class="page-section">
+        <p>Return to the <a href="/gallery-awards">Gallery &amp; Awards overview</a> or browse <a href="/gallery/exteriors">exteriors</a>, <a href="/gallery/interiors">interiors</a>, <a href="/gallery/finishes">finishes</a>, and <a href="/gallery/during-construction">during construction</a> galleries.</p>
+    </section>
+</main>
+
+<?php include '../includes/footer.php'; ?>

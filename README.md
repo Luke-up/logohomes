@@ -42,8 +42,10 @@ php -v
 From repo root (`C:/Users/Luke/projects/logohomes`):
 
 ```powershell
-php -S localhost:8000 -t home_directory/public_html
+php -S localhost:8000 -t home_directory/public_html home_directory/public_html/router.php
 ```
+
+Using `router.php` ensures routes such as `/gallery/exteriors` are handled by `index.php` (the built-in server does not read `.htaccess`).
 
 ### 3) Open local URLs
 

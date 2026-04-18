@@ -43,23 +43,23 @@ if ($currentPath === '') {
         <meta property="og:image:width" content="383" />
         <meta property="og:image:height" content="117" />
         <meta property="og:image:type" content="image/png" />
-        <link rel="icon" href="favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
         <meta
         name="google-site-verification"
         content="zqqe8SEwKkLhTQc7swlQtjArbj3FwIxFljfByRpSTzs"
         />
 
-        <link rel="stylesheet" href="assets/css/styles.css" />
-        <link rel="stylesheet" type="text/css" href="assets//css/slick.css">
-        <link rel="stylesheet" type="text/css" href="assets//css/slick-theme.css">
+        <link rel="stylesheet" href="/assets/css/styles.css" />
+        <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
+        <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
     </head>
 <body>
     <header>
         <nav id="nav-main" itemscope itemtype="https://schema.org/SiteNavigationElement">
             <div id="logo">
                 <a href="/">
-                    <img src="./assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="eager"/>
+                    <img src="/assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="eager"/>
                 </a>
             </div>
             <div id="mobi-hamburger-open"></div>
@@ -94,8 +94,53 @@ if ($currentPath === '') {
                     <li>
                         <a href="/faq" <?php if ($currentPath === 'faq') { echo 'aria-current="page" class="is-active"'; } ?>><span>FAQ</span></a>
                     </li>
-                    <li>
-                        <a href="/gallery-awards" <?php if ($currentPath === 'gallery-awards') { echo 'aria-current="page" class="is-active"'; } ?>><span>Gallery &#038; Awards</span></a>
+                    <?php
+                    $galleryNavPaths = [
+                        'gallery-awards',
+                        'awards',
+                        'gallery/exteriors',
+                        'gallery/interiors',
+                        'gallery/finishes',
+                        'gallery/during-construction',
+                    ];
+                    $galleryNavActive = in_array($currentPath, $galleryNavPaths, true)
+                        || preg_match('#^projects/[a-z0-9-]+$#', $currentPath) === 1;
+                    ?>
+                    <li class="menu-item-has-children">
+                        <a
+                            href="/gallery-awards"
+                            <?php
+                            if ($galleryNavActive) {
+                                echo 'class="is-active"';
+                            }
+                            if ($currentPath === 'gallery-awards') {
+                                echo ' aria-current="page"';
+                            }
+                            ?>
+                        ><span>Gallery &#038; Awards</span></a>
+                        <ul class="sub-menu" aria-label="Gallery and awards sections">
+                            <li>
+                                <a href="/gallery/exteriors" <?php if ($currentPath === 'gallery/exteriors') { echo 'aria-current="page" class="is-active"'; } ?>><span>Exteriors</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/interiors" <?php if ($currentPath === 'gallery/interiors') { echo 'aria-current="page" class="is-active"'; } ?>><span>Interiors</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/finishes" <?php if ($currentPath === 'gallery/finishes') { echo 'aria-current="page" class="is-active"'; } ?>><span>Finishes</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/during-construction" <?php if ($currentPath === 'gallery/during-construction') { echo 'aria-current="page" class="is-active"'; } ?>><span>During construction</span></a>
+                            </li>
+                            <li>
+                                <a href="/awards" <?php
+                                if ($currentPath === 'awards') {
+                                    echo 'aria-current="page" class="is-active"';
+                                } elseif (preg_match('#^projects/[a-z0-9-]+$#', $currentPath) === 1) {
+                                    echo 'class="is-active"';
+                                }
+                                ?>><span>Awards</span></a>
+                            </li>
+                        </ul>
                     </li>
                     <li>
                         <a href="/contact" <?php if ($currentPath === 'contact') { echo 'aria-current="page" class="is-active"'; } ?>><span>Contact</span></a>
