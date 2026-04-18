@@ -16,14 +16,14 @@
         </div>
         <div class="footer-brand">
             <a href="/">    
-            <img src="./assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="lazy"/>
+            <img src="/assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="lazy"/>
             </a>
             <div class="footer-affiliate-logos">
                 <a href="https://www.saitb.co.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit SAITB website">
-                    <img src="./assets/img/footer/SAITB_LOGO.avif" alt="SAITB Logo" loading="lazy"/>
+                    <img src="/assets/img/footer/SAITB_LOGO.avif" alt="SAITB Logo" loading="lazy"/>
                 </a>
                 <a href="https://www.nhbrc.org.za/" target="_blank" rel="noopener noreferrer" aria-label="Visit NHBRC website">
-                    <img src="./assets/img/footer/NHBRClogo53-scaled.avif" alt="NHBRC Logo" loading="lazy"/>
+                    <img src="/assets/img/footer/NHBRClogo53-scaled.avif" alt="NHBRC Logo" loading="lazy"/>
                 </a>
             </div>
         </div>
@@ -45,8 +45,18 @@
     <p>&copy; <?php echo date("Y"); ?> Developed by Luke Paine. All rights reserved.</p>
     </footer>
 
+    <div id="global-lightbox" class="global-lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="global-lightbox-heading">
+        <button type="button" class="global-lightbox-scrim" aria-label="Close image viewer"></button>
+        <div class="global-lightbox-panel">
+            <button type="button" class="global-lightbox-close" aria-label="Close">&times;</button>
+            <img id="global-lightbox-img" class="global-lightbox-img" src="" alt="">
+            <h3 id="global-lightbox-heading" class="global-lightbox-heading"></h3>
+            <p id="global-lightbox-caption" class="global-lightbox-caption"></p>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/script.js"></script>
+    <script src="/assets/js/slick.min.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
 </html>

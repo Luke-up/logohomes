@@ -45,7 +45,116 @@ $(function () {
         console.log("Close clicked, removing 'active' class");
         $("#menu-main-menu").removeClass("active");
     });
-    
+
+    var $featSlider = $(".gallery-feature-slider");
+    if ($featSlider.length) {
+        function syncGalleryFeatureMeta($slide) {
+            var $s = $($slide);
+            $(".gallery-feature-meta-title").text($s.data("title") || "");
+            $(".gallery-feature-meta-dl [data-meta='size']").text($s.data("size") || "");
+            var award = $s.data("award");
+            $(".gallery-feature-meta-dl [data-meta='award']").text(award ? String(award) : "—");
+            $(".gallery-feature-meta-dl [data-meta='location']").text($s.data("location") || "");
+            $(".gallery-feature-meta-summary").text($s.data("summary") || "");
+        }
+        function setGalleryFeatureLayoutClass(slick) {
+            var triple =
+                slick.options.slidesToShow >= 3 && slick.options.centerMode === true;
+            $featSlider.toggleClass("gallery-feature--triple", triple);
+        }
+        $featSlider.on("init breakpoint", function (event, slick) {
+            setGalleryFeatureLayoutClass(slick);
+        });
+        $featSlider.on("init", function (event, slick) {
+            syncGalleryFeatureMeta(slick.$slides[slick.currentSlide]);
+        });
+        $featSlider.on("afterChange", function (event, slick, currentSlide) {
+            syncGalleryFeatureMeta(slick.$slides[currentSlide]);
+        });
+        $featSlider.slick({
+            centerMode: true,
+            centerPadding: "10%",
+            slidesToShow: 3,
+            infinite: true,
+            arrows: true,
+            dots: false,
+            speed: 450,
+            responsive: [
+                {
+                    breakpoint: 900,
+                    settings: {
+                        slidesToShow: 1,
+                        centerMode: false,
+                        centerPadding: "0",
+                    },
+                },
+            ],
+        });
+        setGalleryFeatureLayoutClass($featSlider.slick("getSlick"));
+    }
+
+    var $projectSlider = $(".project-gallery-slider");
+    if ($projectSlider.length) {
+        $projectSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 8000,
+            dots: true,
+            arrows: true,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 400,
+            pauseOnHover: true,
+            draggable: true,
+        });
+    }
+
+    var $lightbox = $("#global-lightbox");
+    var $lightboxImg = $("#global-lightbox-img");
+    var lastLightboxTrigger = null;
+
+    function openGlobalLightbox(src, heading, caption) {
+        if (!src) {
+            return;
+        }
+        lastLightboxTrigger = document.activeElement;
+        $lightboxImg.attr("src", src);
+        $lightboxImg.attr("alt", heading || "Gallery image");
+        var $h = $("#global-lightbox-heading");
+        var $c = $("#global-lightbox-caption");
+        $h.text(heading || "");
+        $h.prop("hidden", !heading);
+        $c.text(caption || "");
+        $c.prop("hidden", !caption);
+        $lightbox.prop("hidden", false);
+        $("body").addClass("global-lightbox-open");
+        $(".global-lightbox-close").trigger("focus");
+    }
+
+    function closeGlobalLightbox() {
+        $lightbox.prop("hidden", true);
+        $lightboxImg.attr("src", "");
+        $("body").removeClass("global-lightbox-open");
+        if (lastLightboxTrigger && typeof lastLightboxTrigger.focus === "function") {
+            lastLightboxTrigger.focus();
+        }
+    }
+
+    $(document).on("click", ".js-lightbox-trigger", function (e) {
+        e.preventDefault();
+        var $t = $(this);
+        openGlobalLightbox($t.data("fullSrc"), $t.data("heading"), $t.data("caption"));
+    });
+
+    $(".global-lightbox-close, .global-lightbox-scrim").on("click", function () {
+        closeGlobalLightbox();
+    });
+
+    $(document).on("keydown", function (e) {
+        if (e.key === "Escape" && !$lightbox.prop("hidden")) {
+            closeGlobalLightbox();
+        }
+    });
 });
 
   const animationObserver = new IntersectionObserver((entries, observer) => {

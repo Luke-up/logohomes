@@ -3,22 +3,22 @@
     <div class="slider-container">
         <div class="header-slider">
             <div>
-                <img src="assets/img/header-slider/1.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/1.avif" alt="Logo Homes exterior shot">
             </div>
             <div>
-                <img src="assets/img/header-slider/2.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/2.avif" alt="Logo Homes exterior shot">
             </div>
             <div>
-                <img src="assets/img/header-slider/3.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/3.avif" alt="Logo Homes exterior shot">
             </div>
             <div>
-                <img src="assets/img/header-slider/4.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/4.avif" alt="Logo Homes exterior shot">
             </div>
             <div>
-                <img src="assets/img/header-slider/5.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/5.avif" alt="Logo Homes exterior shot">
             </div>
             <div>
-                <img src="assets/img/header-slider/6.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/header-slider/6.avif" alt="Logo Homes exterior shot">
             </div>
         </div>
     </div>
@@ -59,9 +59,9 @@
         <div>
             <div class="project">
                 <div class="image-container">
-                    <img src="assets/img/header-slider/1.avif" alt="Exterior home shot">
-                    <img src="assets/img/header-slider/1.avif" alt="Exterior home shot">
-                    <img src="assets/img/header-slider/1.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
                 </div>
                 <div class="information">
                     <h3>Project Title</h3>
@@ -97,9 +97,9 @@
         <div>
             <div class="project">
                 <div class="image-container">
-                    <img src="assets/img/header-slider/2.avif" alt="Exterior home shot">
-                    <img src="assets/img/header-slider/2.avif" alt="Exterior home shot">
-                    <img src="assets/img/header-slider/2.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
+                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
                 </div>
                 <div class="information">
                     <h3>Project Title</h3>
@@ -140,7 +140,7 @@
     <div class="featured-slider">
         <div>
             <div class="listing-slide">
-                <img src="assets/img/featured-slider/1.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/featured-slider/1.avif" alt="Logo Homes exterior shot">
                 <div class="text">
                     <p>Silver Award - Simonstown</p>
                 </div>
@@ -148,7 +148,7 @@
         </div>
         <div>
             <div class="listing-slide">
-                <img src="assets/img/featured-slider/2.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/featured-slider/2.avif" alt="Logo Homes exterior shot">
                 <div class="text">
                     <p>Silver Award - Simonstown</p>
                 </div>
@@ -156,7 +156,7 @@
         </div>
         <div>
             <div class="listing-slide">
-                <img src="assets/img/featured-slider/3.avif" alt="Logo Homes exterior shot">
+                <img src="/assets/img/featured-slider/3.avif" alt="Logo Homes exterior shot">
                 <div class="text">
                     <p>Silver Award - Noordhoek</p>
                 </div>

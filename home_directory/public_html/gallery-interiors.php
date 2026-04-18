@@ -1,0 +1,23 @@
+<?php
+$galleryAssetBase = 'assets/gallery/interiors';
+$galleryMosaicAriaLabel = 'Interiors images';
+?>
+<?php include '../includes/header.php'; ?>
+
+<main class="content-page content-page--gallery content-page--gallery-mosaic">
+    <section class="page-hero">
+        <h1>Interiors</h1>
+    </section>
+
+    <section class="page-section">
+        <p>Living spaces, light, and layout across selected homes.</p>
+    </section>
+
+<?php include __DIR__ . '/../includes/partials/gallery-theme-mosaic.php'; ?>
+
+    <section class="page-section">
+        <p><a href="/gallery-awards">Gallery &amp; Awards</a></p>
+    </section>
+</main>
+
+<?php include '../includes/footer.php'; ?>
