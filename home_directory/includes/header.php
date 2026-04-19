@@ -117,8 +117,8 @@ if ($currentPath === '') {
                                 echo ' aria-current="page"';
                             }
                             ?>
-                        ><span>Gallery &#038; Awards</span></a>
-                        <ul class="sub-menu" aria-label="Gallery and awards sections">
+                        ><span>Gallery</span></a>
+                        <ul class="sub-menu" aria-label="Gallery sections">
                             <li>
                                 <a href="/gallery/exteriors" <?php if ($currentPath === 'gallery/exteriors') { echo 'aria-current="page" class="is-active"'; } ?>><span>Exteriors</span></a>
                             </li>

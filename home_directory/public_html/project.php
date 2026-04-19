@@ -50,23 +50,34 @@ $awardHero = logohomes_award_display_phrase($project['award']);
 
     <?php if ($galleryImages !== []) : ?>
     <section class="page-section project-gallery-section" aria-label="Project gallery">
-        <div class="project-gallery-slider">
-            <?php foreach ($galleryImages as $img) :
-                $cap = $img['caption'] !== '' ? $img['caption'] : $img['heading'];
-                ?>
-            <div class="project-gallery-slide">
-                <button
-                    type="button"
-                    class="project-gallery-slide-btn js-lightbox-trigger"
-                    data-full-src="<?php echo htmlspecialchars($img['fullWeb'], ENT_QUOTES, 'UTF-8'); ?>"
-                    data-caption="<?php echo htmlspecialchars($cap, ENT_QUOTES, 'UTF-8'); ?>"
-                    data-heading="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
-                    aria-label="Open larger image: <?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
-                >
-                    <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" width="1200" height="800" loading="lazy" decoding="async">
+        <div class="project-gallery-shell">
+            <div class="project-gallery-slider">
+                <?php foreach ($galleryImages as $img) :
+                    $cap = $img['caption'] !== '' ? $img['caption'] : $img['heading'];
+                    ?>
+                <div class="project-gallery-slide">
+                    <button
+                        type="button"
+                        class="project-gallery-slide-btn js-lightbox-trigger"
+                        data-full-src="<?php echo htmlspecialchars($img['fullWeb'], ENT_QUOTES, 'UTF-8'); ?>"
+                        data-caption="<?php echo htmlspecialchars($cap, ENT_QUOTES, 'UTF-8'); ?>"
+                        data-heading="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
+                        aria-label="Open larger image: <?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
+                    >
+                        <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                    </button>
+                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="project-gallery-controls" role="group" aria-label="Gallery navigation">
+                <button type="button" class="project-gallery-nav-btn project-gallery-nav-btn--prev" aria-label="Previous image">
+                    <svg class="project-gallery-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <div class="project-gallery-dots-host"></div>
+                <button type="button" class="project-gallery-nav-btn project-gallery-nav-btn--next" aria-label="Next image">
+                    <svg class="project-gallery-nav-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
                 </button>
             </div>
-            <?php endforeach; ?>
         </div>
     </section>
     <?php else : ?>
@@ -76,7 +87,7 @@ $awardHero = logohomes_award_display_phrase($project['award']);
     <?php endif; ?>
 
     <section class="page-section">
-        <p><a href="/awards">Awards &amp; projects</a> · <a href="/gallery-awards">Gallery &amp; Awards</a></p>
+        <p><a href="/awards">Awards</a> · <a href="/gallery-awards">Gallery</a></p>
     </section>
 </main>
 

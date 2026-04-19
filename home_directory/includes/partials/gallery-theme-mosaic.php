@@ -27,18 +27,19 @@ $mosaicAria = isset($galleryMosaicAriaLabel) && $galleryMosaicAriaLabel !== ''
         <div class="gallery-mosaic">
             <?php foreach ($sectionImages as $img) :
                 $fn = $img['filename'];
+                $label = $img['label'] ?? $fn;
                 ?>
             <button
                 type="button"
                 class="gallery-mosaic-item js-lightbox-trigger"
                 data-full-src="<?php echo htmlspecialchars($img['fullWeb'], ENT_QUOTES, 'UTF-8'); ?>"
-                data-heading="<?php echo htmlspecialchars($fn, ENT_QUOTES, 'UTF-8'); ?>"
-                aria-label="Open image: <?php echo htmlspecialchars($fn, ENT_QUOTES, 'UTF-8'); ?>"
+                data-heading="<?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>"
+                aria-label="Open image: <?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>"
             >
                 <span class="gallery-mosaic-item-inner">
-                    <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($fn, ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                    <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
                 </span>
-                <span class="gallery-mosaic-filename"><?php echo htmlspecialchars($fn, ENT_QUOTES, 'UTF-8'); ?></span>
+                <span class="gallery-mosaic-filename"><?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?></span>
             </button>
             <?php endforeach; ?>
         </div>

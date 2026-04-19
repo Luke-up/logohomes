@@ -38,7 +38,7 @@ $projects = logohomes_projects();
     </nav>
 
     <section class="page-section">
-        <p>Return to the <a href="/gallery-awards">Gallery &amp; Awards overview</a> or browse <a href="/gallery/exteriors">exteriors</a>, <a href="/gallery/interiors">interiors</a>, <a href="/gallery/finishes">finishes</a>, and <a href="/gallery/during-construction">during construction</a> galleries.</p>
+        <p>Return to <a href="/gallery-awards">Gallery</a> or browse <a href="/gallery/exteriors">exteriors</a>, <a href="/gallery/interiors">interiors</a>, <a href="/gallery/finishes">finishes</a>, and <a href="/gallery/during-construction">during construction</a> galleries.</p>
     </section>
 </main>
 
