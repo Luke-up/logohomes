@@ -100,6 +100,21 @@ function logohomes_humanize_image_heading(string $filename): string
     return $base === '' ? $filename : ucwords($base);
 }
 
+/**
+ * Theme feature mosaic label: strip any extension, replace "-" with spaces (filename as typed, not title case).
+ */
+function logohomes_theme_feature_tile_label(string $filename): string
+{
+    $base = preg_replace('/\.[^.]+$/', '', $filename);
+    if (!is_string($base) || $base === '') {
+        $base = $filename;
+    }
+    $label = str_replace('-', ' ', $base);
+    $label = trim(preg_replace('/\s+/', ' ', $label) ?? '');
+
+    return $label === '' ? $filename : $label;
+}
+
 /** List absolute image paths in one directory (non-recursive), sorted for stable gallery order. */
 function logohomes_glob_images_in_dir(string $diskDir): array
 {
@@ -124,7 +139,7 @@ function logohomes_glob_images_in_dir(string $diskDir): array
  * Theme feature galleries (exteriors, interiors, finishes, during-construction): scan only `thumb/`.
  * Each tile shows the file basename; the lightbox opens `full/{basename}` when that file exists, else the thumb.
  *
- * @return list<array{filename: string, thumbWeb: string, fullWeb: string}>
+ * @return list<array{filename: string, label: string, thumbWeb: string, fullWeb: string}>
  */
 function logohomes_theme_feature_images(string $relativeDir): array
 {
@@ -165,6 +180,7 @@ function logohomes_theme_feature_images(string $relativeDir): array
 
         $out[] = [
             'filename' => $basename,
+            'label' => logohomes_theme_feature_tile_label($basename),
             'thumbWeb' => $thumbWeb,
             'fullWeb' => $fullWeb,
         ];
