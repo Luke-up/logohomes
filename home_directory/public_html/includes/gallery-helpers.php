@@ -27,7 +27,7 @@ $GLOBALS['_logohomes_public_root'] = null;
 function logohomes_public_root(): string
 {
     if ($GLOBALS['_logohomes_public_root'] === null) {
-        $root = realpath(__DIR__ . '/../public_html');
+        $root = realpath(__DIR__ . '/..');
         $GLOBALS['_logohomes_public_root'] = $root !== false ? $root : '';
     }
 

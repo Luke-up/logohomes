@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . '/../includes/projects-data.php';
-require_once __DIR__ . '/../includes/gallery-helpers.php';
+require_once __DIR__ . '/includes/projects-data.php';
+require_once __DIR__ . '/includes/gallery-helpers.php';
 
 $projects = logohomes_projects_overview_records();
 ?>
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="content-page content-page--gallery content-page--gallery-hub">
     <section class="page-hero">
@@ -93,4 +93,4 @@ $projects = logohomes_projects_overview_records();
 
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

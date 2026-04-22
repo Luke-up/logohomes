@@ -5,8 +5,8 @@
  * Project copy and award metadata: includes/projects-data.php
  * Image discovery: includes/gallery-helpers.php
  */
-require_once __DIR__ . '/../includes/projects-data.php';
-require_once __DIR__ . '/../includes/gallery-helpers.php';
+require_once __DIR__ . '/includes/projects-data.php';
+require_once __DIR__ . '/includes/gallery-helpers.php';
 
 $slug = $projectSlug ?? '';
 $project = logohomes_project_by_slug($slug);
@@ -21,7 +21,7 @@ $galleryImages = logohomes_collect_gallery_images($assetRel);
 $awardLabel = logohomes_award_label($project['award']);
 $awardHero = logohomes_award_display_phrase($project['award']);
 ?>
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="content-page content-page--gallery content-page--project">
     <section class="page-hero page-hero--project">
@@ -91,4 +91,4 @@ $awardHero = logohomes_award_display_phrase($project['award']);
     </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

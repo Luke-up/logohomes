@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../includes/projects-data.php';
-require_once __DIR__ . '/../includes/gallery-helpers.php';
+require_once __DIR__ . '/includes/projects-data.php';
+require_once __DIR__ . '/includes/gallery-helpers.php';
 
 $projects = logohomes_projects();
 $homeFeaturedProjects = [];
@@ -46,7 +46,7 @@ foreach ($projects as $project) {
     }
 }
 ?>
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 <div class="header">
     <div class="slider-container">
         <div class="header-slider">
@@ -197,4 +197,4 @@ foreach ($projects as $project) {
 </div>
 
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

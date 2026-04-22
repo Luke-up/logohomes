@@ -1,4 +1,4 @@
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="content-page">
     <section class="page-hero">
@@ -26,4 +26,4 @@
     </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

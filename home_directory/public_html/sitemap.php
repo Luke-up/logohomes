@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../includes/projects-data.php';
-include '../includes/header.php';
+require_once __DIR__ . '/includes/projects-data.php';
+include __DIR__ . '/includes/header.php';
 ?>
 <h1>Website Sitemap</h1>
 <ul>
@@ -25,4 +25,4 @@ include '../includes/header.php';
     </li>
     <li><a href="/contact">Contact</a></li>
 </ul>
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
