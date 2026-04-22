@@ -80,6 +80,63 @@ function logohomes_projects(): array
     ];
 }
 
+/**
+ * Parse project JSON into normalized records for overview sliders.
+ *
+ * @return list<array{
+ *   slug: string,
+ *   title: string,
+ *   award: string,
+ *   location: string,
+ *   size_label: string
+ * }>
+ */
+function logohomes_parse_projects_overview_json(string $projectsJson): array
+{
+    $decoded = json_decode($projectsJson, true);
+    if (!is_array($decoded)) {
+        return [];
+    }
+
+    $records = [];
+
+    foreach ($decoded as $project) {
+        if (!is_array($project)) {
+            continue;
+        }
+        $records[] = [
+            'slug' => isset($project['slug']) && is_string($project['slug']) ? $project['slug'] : '',
+            'title' => isset($project['title']) && is_string($project['title']) ? $project['title'] : '',
+            'award' => isset($project['award']) && is_string($project['award']) ? $project['award'] : '',
+            'location' => isset($project['location']) && is_string($project['location']) ? $project['location'] : '',
+            'size_label' => isset($project['size_label']) && is_string($project['size_label']) ? $project['size_label'] : '',
+        ];
+    }
+
+    return $records;
+}
+
+/**
+ * JSON-backed accessor for overview slider data.
+ *
+ * @return list<array{
+ *   slug: string,
+ *   title: string,
+ *   award: string,
+ *   location: string,
+ *   size_label: string
+ * }>
+ */
+function logohomes_projects_overview_records(): array
+{
+    $projectsJson = json_encode(logohomes_projects(), JSON_UNESCAPED_UNICODE);
+    if (!is_string($projectsJson)) {
+        return [];
+    }
+
+    return logohomes_parse_projects_overview_json($projectsJson);
+}
+
 function logohomes_project_by_slug(string $slug): ?array
 {
     foreach (logohomes_projects() as $project) {

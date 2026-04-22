@@ -21,18 +21,27 @@ $(function () {
         fade: false,
         autoplaySpeed: 5000
     });
-    $('.featured-projects-slider').slick({
-        autoplay: false,
-        dots: false,
-        arrows: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        speed: 500,
-        fade: true,
-        prevArrow: $('.prev-arrow'),
-        nextArrow: $('.next-arrow'),
-    });
+    var $featuredProjectsSlider = $('.featured-projects-slider');
+    if ($featuredProjectsSlider.length) {
+        $featuredProjectsSlider.slick({
+            autoplay: false,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 500,
+            fade: true,
+        });
+        $('.featured-projects .prev-arrow').on('click', function (e) {
+            e.preventDefault();
+            $featuredProjectsSlider.slick('slickPrev');
+        });
+        $('.featured-projects .next-arrow').on('click', function (e) {
+            e.preventDefault();
+            $featuredProjectsSlider.slick('slickNext');
+        });
+    }
 
     $("#mobi-hamburger-open").click(function() {
         event.stopPropagation();
@@ -67,6 +76,51 @@ $(function () {
         });
         $(".project-gallery-nav-btn--next").on("click", function () {
             $projectSlider.slick("slickNext");
+        });
+    }
+
+    var $awardsImageSlider = $(".gallery-awards-image-slider");
+    var $awardsTextSlider = $(".gallery-awards-text-slider");
+    if ($awardsImageSlider.length && $awardsTextSlider.length) {
+        $awardsImageSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 8000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            infinite: true,
+            centerMode: true,
+            centerPadding: "14%",
+            adaptiveHeight: true,
+            asNavFor: ".gallery-awards-text-slider",
+            responsive: [
+                {
+                    breakpoint: 920,
+                    settings: {
+                        centerPadding: "10%",
+                    },
+                },
+                {
+                    breakpoint: 640,
+                    settings: {
+                        centerPadding: "6%",
+                    },
+                },
+            ],
+        });
+        $awardsTextSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 8000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: false,
+            infinite: true,
+            adaptiveHeight: true,
+            asNavFor: ".gallery-awards-image-slider",
+            prevArrow: $(".gallery-awards-slider-nav-btn--prev"),
+            nextArrow: $(".gallery-awards-slider-nav-btn--next"),
         });
     }
 

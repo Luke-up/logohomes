@@ -13,11 +13,11 @@ declare(strict_types=1);
  * - Theme feature pages: `logohomes_theme_feature_images()` — `thumb/` only on the grid; lightbox uses
  *   matching `full/` filename when that file exists (otherwise the thumb URL).
  * - Project galleries: `logohomes_collect_gallery_images()` with optional `captions.json` and flexible layout.
- * - `logohomes_project_feature_thumb_web()` for the hub project carousel first shot.
+ * - `logohomes_project_feature_thumb_web()` for project cards (e.g. awards listing).
  * - Award helpers are tiny display mappers used in PHP and in `data-*` attributes for JS.
  *
  * You could inline some of this into one template file, but keeping it here keeps templates
- * readable and behaviour consistent across hub / themes / projects.
+ * readable and behaviour consistent across themes / projects.
  */
 
 /** @var string|null Cached absolute path to public_html */
@@ -265,7 +265,7 @@ function logohomes_collect_gallery_images(string $relativeDir): array
     return $out;
 }
 
-/** First thumbnail (or full) URL for a project slug — used on the Gallery & Awards hub carousel. */
+/** First thumbnail (or full) URL for a project slug — used on project listings (e.g. awards page). */
 function logohomes_project_feature_thumb_web(string $slug): ?string
 {
     $images = logohomes_collect_gallery_images('assets/gallery/projects/' . $slug);

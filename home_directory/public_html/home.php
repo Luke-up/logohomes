@@ -1,3 +1,51 @@
+<?php
+require_once __DIR__ . '/../includes/projects-data.php';
+require_once __DIR__ . '/../includes/gallery-helpers.php';
+
+$projects = logohomes_projects();
+$homeFeaturedProjects = [];
+$homeAwardProjects = [];
+
+foreach ($projects as $project) {
+    $slug = $project['slug'];
+    $title = $project['title'];
+    $location = $project['location'];
+    $summary = $project['summary_blurb'];
+    $images = logohomes_collect_gallery_images('assets/gallery/projects/' . $slug);
+    $thumbs = [];
+
+    foreach (array_slice($images, 0, 3) as $img) {
+        $thumbs[] = $img['thumbWeb'];
+    }
+
+    while ($thumbs !== [] && count($thumbs) < 3) {
+        $thumbs[] = $thumbs[count($thumbs) - 1];
+    }
+
+    if ($thumbs !== []) {
+        $homeFeaturedProjects[] = [
+            'slug' => $slug,
+            'title' => $title,
+            'location' => $location,
+            'summary' => $summary,
+            'thumbs' => $thumbs,
+        ];
+    }
+
+    $awardLabel = logohomes_award_label($project['award']);
+    $awardText = $awardLabel !== '' ? $awardLabel . ' - ' . $location : $location;
+    $featureThumb = $images[0]['thumbWeb'] ?? null;
+
+    if (is_string($featureThumb) && $featureThumb !== '') {
+        $homeAwardProjects[] = [
+            'slug' => $slug,
+            'title' => $title,
+            'awardText' => $awardText,
+            'thumb' => $featureThumb,
+        ];
+    }
+}
+?>
 <?php include '../includes/header.php'; ?>
 <div class="header">
     <div class="slider-container">
@@ -56,29 +104,19 @@
 
 <div class="featured-projects">
     <div class="featured-projects-slider">
+        <?php foreach ($homeFeaturedProjects as $project) : ?>
         <div>
             <div class="project">
                 <div class="image-container">
-                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
-                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
-                    <img src="/assets/img/header-slider/1.avif" alt="Exterior home shot">
+                    <a class="project-link-overlay" href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>" aria-label="View project: <?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>"></a>
+                    <?php foreach ($project['thumbs'] as $thumb) : ?>
+                    <img src="<?php echo htmlspecialchars($thumb, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                    <?php endforeach; ?>
                 </div>
                 <div class="information">
-                    <h3>Project Title</h3>
-                    <p>Project location</p>
-                    <p>
-                        Project details Project details Project details Project details
-                        <br>
-                        Project details Project details Project details Project details Project details
-                        <br><br>
-                        Project details Project details Project details Project details
-                        <br>
-                        Project details Project details Project details
-                        <br><br>
-                        Project details Project details Project details Project details Project details details Project details
-                        <br>
-                        Project details Project details Project details Project details
-                    </p>
+                    <h3><a href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?></a></h3>
+                    <p><?php echo htmlspecialchars($project['location'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p><?php echo htmlspecialchars($project['summary'], ENT_QUOTES, 'UTF-8'); ?></p>
                     <div class="navigation">
                         <div class="prev-arrow">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -94,74 +132,25 @@
                 </div>
             </div>
         </div>
-        <div>
-            <div class="project">
-                <div class="image-container">
-                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
-                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
-                    <img src="/assets/img/header-slider/2.avif" alt="Exterior home shot">
-                </div>
-                <div class="information">
-                    <h3>Project Title</h3>
-                    <p>Project location</p>
-                    <p>
-                        Project details Project details Project details Project details
-                        <br>
-                        Project details Project details Project details Project details Project details Project details details Project details
-                        <br><br>
-                        Project details Project details Project details 
-                        <br>
-                        Project details Project details Project details
-                        <br><br>
-                        Project details Project details Project details Project details 
-                        <br>
-                        Project details Project details Project
-                    </p>
-                    <div class="navigation">
-                        <div class="prev-arrow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M15 6l-6 6 6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="next-arrow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M9 6l6 6-6 6" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
 <div class="featured-container">
     <h3>Latest Awards</h3>
     <div class="featured-slider">
+        <?php foreach ($homeAwardProjects as $project) : ?>
         <div>
-            <div class="listing-slide">
-                <img src="/assets/img/featured-slider/1.avif" alt="Logo Homes exterior shot">
-                <div class="text">
-                    <p>Silver Award - Simonstown</p>
+            <a class="featured-award-link" href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>">
+                <div class="listing-slide">
+                    <img src="<?php echo htmlspecialchars($project['thumb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                    <div class="text">
+                        <p><?php echo htmlspecialchars($project['awardText'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
-        <div>
-            <div class="listing-slide">
-                <img src="/assets/img/featured-slider/2.avif" alt="Logo Homes exterior shot">
-                <div class="text">
-                    <p>Silver Award - Simonstown</p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="listing-slide">
-                <img src="/assets/img/featured-slider/3.avif" alt="Logo Homes exterior shot">
-                <div class="text">
-                    <p>Silver Award - Noordhoek</p>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </div>
 
@@ -187,19 +176,23 @@
 </div>
 
 <div class="get-in-touch">
-    <h3>Contact Us</h3>
-        <form action="submit.php" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Full Name" required>
+    <div class="get-in-touch-form-block">
+        <h2 class="get-in-touch-form-heading">Contact us and we'll get back to you</h2>
+            <form action="submit.php" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Full Name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Message" required></textarea>
+                <div class="message-field-wrap">
+                    <textarea id="message" name="message" placeholder="" rows="5" required></textarea>
+                    <label for="message" class="message-field-label">Message</label>
+                </div>
 
-            <button type="submit">Send</button>
-        </form>
+                <button type="submit">Send</button>
+            </form>
+    </div>
         
 </div>
 
