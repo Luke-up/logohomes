@@ -24,5 +24,6 @@ include __DIR__ . '/includes/header.php';
         </ul>
     </li>
     <li><a href="/contact">Contact</a></li>
+    <li><a href="/privacy-policy">Privacy policy</a></li>
 </ul>
 <?php include __DIR__ . '/includes/footer.php'; ?>

@@ -31,6 +31,8 @@ if ($path == '' || $path == 'home') {
     include 'sitemap.php';
 } elseif ($path == 'contact') {
     include 'contact.php';
+} elseif ($path == 'privacy-policy') {
+    include 'privacy-policy.php';
 } else {
     include '404.php';
 }

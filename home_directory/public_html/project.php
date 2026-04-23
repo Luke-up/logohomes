@@ -53,7 +53,11 @@ $awardHero = logohomes_award_display_phrase($project['award']);
         <div class="project-gallery-shell">
             <div class="project-gallery-slider">
                 <?php foreach ($galleryImages as $img) :
-                    $cap = $img['caption'] !== '' ? $img['caption'] : $img['heading'];
+                    $heading = $img['heading'];
+                    $cap = $img['caption'] !== '' ? $img['caption'] : '';
+                    if ($cap !== '' && $cap === $heading) {
+                        $cap = '';
+                    }
                     ?>
                 <div class="project-gallery-slide">
                     <button
@@ -61,7 +65,7 @@ $awardHero = logohomes_award_display_phrase($project['award']);
                         class="project-gallery-slide-btn js-lightbox-trigger"
                         data-full-src="<?php echo htmlspecialchars($img['fullWeb'], ENT_QUOTES, 'UTF-8'); ?>"
                         data-caption="<?php echo htmlspecialchars($cap, ENT_QUOTES, 'UTF-8'); ?>"
-                        data-heading="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
+                        data-heading="<?php echo htmlspecialchars($heading, ENT_QUOTES, 'UTF-8'); ?>"
                         aria-label="Open larger image: <?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
                     >
                         <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">

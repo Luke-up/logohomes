@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . '/includes/projects-data.php';
 require_once __DIR__ . '/includes/gallery-helpers.php';
+require_once __DIR__ . '/includes/request-viewport-hint.php';
+
+$body_class_extra = logohomes_request_hints_coarse_mobile() ? 'layout-coarse-mobile-hint' : '';
 
 $projects = logohomes_projects();
 $homeFeaturedProjects = [];

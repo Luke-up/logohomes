@@ -19,7 +19,16 @@ $(function () {
         slidesToScroll: 1,
         speed: 2000,
         fade: false,
-        autoplaySpeed: 5000
+        autoplaySpeed: 5000,
+        responsive: [
+            {
+                breakpoint: 1000,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                },
+            },
+        ],
     });
     var $featuredProjectsSlider = $('.featured-projects-slider');
     if ($featuredProjectsSlider.length) {
@@ -43,16 +52,30 @@ $(function () {
         });
     }
 
-    $("#mobi-hamburger-open").click(function() {
-        event.stopPropagation();
-        console.log("Hamburger clicked, adding 'active' class");
-        $("#menu-main-menu").addClass("active");
+    var $mobiMenu = $("#menu-main-menu");
+    var $mobiToggle = $("#nav-mobi-toggle");
+    function setMobiMenuOpen(open) {
+        $mobiMenu.toggleClass("active", !!open);
+        $("#nav-main").toggleClass("menu-open", !!open);
+        if ($mobiToggle.length) {
+            $mobiToggle.attr("aria-expanded", open ? "true" : "false");
+            $mobiToggle.attr("aria-label", open ? "Close menu" : "Open menu");
+        }
+    }
+    $mobiToggle.on("click", function (e) {
+        e.stopPropagation();
+        setMobiMenuOpen(!$mobiMenu.hasClass("active"));
     });
-    
-    $("#mobi-hamburger-close").click(function() {
-        event.stopPropagation();
-        console.log("Close clicked, removing 'active' class");
-        $("#menu-main-menu").removeClass("active");
+    $(document).on("keydown.mobiNav", function (e) {
+        if (e.key === "Escape" && $mobiMenu.hasClass("active")) {
+            setMobiMenuOpen(false);
+            $mobiToggle.trigger("focus");
+        }
+    });
+    $(window).on("resize.mobiNav", function () {
+        if (window.innerWidth > 1000 && $mobiMenu.hasClass("active")) {
+            setMobiMenuOpen(false);
+        }
     });
 
     var $projectSlider = $(".project-gallery-slider");
@@ -102,9 +125,10 @@ $(function () {
                     },
                 },
                 {
-                    breakpoint: 640,
+                    breakpoint: 720,
                     settings: {
-                        centerPadding: "6%",
+                        centerMode: false,
+                        centerPadding: "0px",
                     },
                 },
             ],

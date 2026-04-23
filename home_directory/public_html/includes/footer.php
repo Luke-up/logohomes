@@ -38,7 +38,6 @@
     <br>
     <ul>
         <li><a href="/privacy-policy">Privacy Policy</a></li>
-        <li><a href="/terms-of-service">Terms of Service</a></li>
         <li><a href="/sitemap">Sitemap</a></li>
         <li><a href="/contact">Contact</a></li>
     </ul>

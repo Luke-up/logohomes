@@ -3,6 +3,14 @@ $currentPath = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 if ($currentPath === '') {
     $currentPath = 'home';
 }
+$body_class_extra = isset($body_class_extra) && is_string($body_class_extra) ? trim($body_class_extra) : '';
+$pageTitle = isset($pageTitle) && is_string($pageTitle) && $pageTitle !== '' ? $pageTitle : 'Design and building your perfect home. - Logo Homes';
+$pageDescription = isset($pageDescription) && is_string($pageDescription) && $pageDescription !== ''
+    ? $pageDescription
+    : 'Logo Homes offer you a highly specialised and unique timber frame building service that incorporates both the design and the building of your perfect home.';
+$canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUrl !== ''
+    ? $canonicalUrl
+    : 'https://www.logohomes.co.za/';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,23 +18,23 @@ if ($currentPath === '') {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title>Design and building your perfect home. - Logo Homes</title>
+        <title><?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?></title>
         <meta
         name="description"
-        content="Logo Homes offer you a highly specialised and unique timber frame building service that incorporates both the design and the building of your perfect home."
+        content="<?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?>"
         />
-        <link rel="canonical" href="https://www.logohomes.co.za/" />
+        <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
         <meta property="og:locale" content="en_US" />
         <meta property="og:type" content="website" />
         <meta
         property="og:title"
-        content="Design and building your perfect home. - Logo Homes"
+        content="<?php echo htmlspecialchars($pageTitle, ENT_QUOTES, 'UTF-8'); ?>"
         />
         <meta
         property="og:description"
-        content="At Logo Homes, we are able to offer you a highly specialised and unique timber frame building service that incorporates both the design and the building of your perfect home."
+        content="<?php echo htmlspecialchars($pageDescription, ENT_QUOTES, 'UTF-8'); ?>"
         />
-        <meta property="og:url" content="https://www.logohomes.co.za/" />
+        <meta property="og:url" content="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
         <meta property="og:site_name" content="Logo Homes" />
         <meta
         property="article:publisher"
@@ -54,7 +62,7 @@ if ($currentPath === '') {
         <link rel="stylesheet" type="text/css" href="/assets/css/slick.css">
         <link rel="stylesheet" type="text/css" href="/assets/css/slick-theme.css">
     </head>
-<body>
+<body<?php echo $body_class_extra !== '' ? ' class="' . htmlspecialchars($body_class_extra, ENT_QUOTES, 'UTF-8') . '"' : ''; ?>>
     <header>
         <nav id="nav-main" itemscope itemtype="https://schema.org/SiteNavigationElement">
             <div id="logo">
@@ -62,7 +70,19 @@ if ($currentPath === '') {
                     <img src="/assets/logo-with-tagline.png" alt="Logo Homes Logo" width="288" loading="eager"/>
                 </a>
             </div>
-            <div id="mobi-hamburger-open"></div>
+            <button
+                type="button"
+                id="nav-mobi-toggle"
+                class="nav-mobi-toggle"
+                aria-controls="menu-main-menu"
+                aria-expanded="false"
+                aria-label="Open menu"
+            >
+                <span class="nav-mobi-toggle-inner" aria-hidden="true">
+                    <span class="nav-mobi-toggle-line"></span>
+                    <span class="nav-mobi-toggle-line"></span>
+                </span>
+            </button>
             <div class="nav-links-col">
                 <div class="header-contact-row" aria-label="Contact information">
                     <a href="tel:+27218454606" aria-label="Call Logo Homes">
@@ -81,7 +101,6 @@ if ($currentPath === '') {
                     </a>
                 </div>
                 <ul id="menu-main-menu">
-                    <div id="mobi-hamburger-close"></div>
                     <li>
                         <a href="/" <?php if ($currentPath === 'home') { echo 'aria-current="page" class="is-active"'; } ?>><span>Home</span></a>
                     </li>
