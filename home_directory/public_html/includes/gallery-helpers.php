@@ -13,7 +13,7 @@ declare(strict_types=1);
  * - Theme feature pages: `logohomes_theme_feature_images()` — `thumb/` only on the grid; lightbox uses
  *   matching `full/` filename when that file exists (otherwise the thumb URL).
  * - Project galleries: `logohomes_collect_gallery_images()` with optional `captions.json` and flexible layout.
- * - `logohomes_project_feature_thumb_web()` for project cards (e.g. awards listing).
+ * - `logohomes_project_feature_thumb_web()` for project cards (e.g. projects listing).
  * - Award helpers are tiny display mappers used in PHP and in `data-*` attributes for JS.
  *
  * You could inline some of this into one template file, but keeping it here keeps templates
@@ -265,12 +265,129 @@ function logohomes_collect_gallery_images(string $relativeDir): array
     return $out;
 }
 
-/** First thumbnail (or full) URL for a project slug — used on project listings (e.g. awards page). */
+/** First thumbnail (or full) URL for a project slug — used on project listings (e.g. projects page). */
 function logohomes_project_feature_thumb_web(string $slug): ?string
 {
     $images = logohomes_collect_gallery_images('assets/gallery/projects/' . $slug);
 
     return $images[0]['thumbWeb'] ?? null;
+}
+
+/**
+ * Homepage "Latest Awards" strip: up to two images under `assets/img/awards/`.
+ * Overlay copy matches theme mosaic tiles: basename without extension, `-` → spaces
+ * (`logohomes_theme_feature_tile_label()`).
+ *
+ * @return list<array{src: string, label: string}>
+ */
+function logohomes_home_awards_folder_slides(): array
+{
+    $dir = logohomes_public_root() . '/assets/img/awards';
+    if ($dir === '' || !is_dir($dir)) {
+        return [];
+    }
+
+    $extOk = array_flip(logohomes_gallery_image_extensions());
+    $names = [];
+    foreach (scandir($dir) ?: [] as $name) {
+        if ($name === '.' || $name === '..') {
+            continue;
+        }
+        $path = $dir . '/' . $name;
+        if (!is_file($path)) {
+            continue;
+        }
+        $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+        if (!isset($extOk[$ext])) {
+            continue;
+        }
+        $names[] = $name;
+    }
+
+    sort($names, SORT_NATURAL | SORT_FLAG_CASE);
+
+    $out = [];
+    foreach (array_slice($names, 0, 2) as $name) {
+        $out[] = [
+            'src' => logohomes_web_path('assets/img/awards/' . $name),
+            'label' => logohomes_theme_feature_tile_label($name),
+        ];
+    }
+
+    return $out;
+}
+
+/** Resolve `{relativeDir}/{stem}.{ext}` for the first gallery extension that exists on disk. */
+function logohomes_image_web_by_stem(string $relativeDir, string $stem): ?string
+{
+    $root = logohomes_public_root();
+    if ($root === '') {
+        return null;
+    }
+    $relativeDir = trim(str_replace('\\', '/', $relativeDir), '/');
+    if (str_contains($relativeDir, '..')) {
+        return null;
+    }
+    foreach (logohomes_gallery_image_extensions() as $ext) {
+        $rel = $relativeDir . '/' . $stem . '.' . $ext;
+        if (is_file($root . '/' . $rel)) {
+            return logohomes_web_path($rel);
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Construction page progress slider: `construction_progress_1` … `_5` under `assets/img/construction`.
+ *
+ * @return list<string> Web URLs in numeric order (missing indices skipped).
+ */
+function logohomes_construction_progress_slide_urls(): array
+{
+    if (logohomes_public_root() === '') {
+        return [];
+    }
+    $out = [];
+    for ($i = 1; $i <= 5; $i++) {
+        $url = logohomes_image_web_by_stem('assets/img/construction', 'construction_progress_' . $i);
+        if ($url !== null) {
+            $out[] = $url;
+        }
+    }
+
+    return $out;
+}
+
+/** First image in `assets/img/finishes` (flat folder), natural sort — used on the Finishes marketing page. */
+function logohomes_finishes_marketing_feature_web(): ?string
+{
+    $dir = logohomes_public_root() . '/assets/img/finishes';
+    if ($dir === '' || !is_dir($dir)) {
+        return null;
+    }
+    $extOk = array_flip(logohomes_gallery_image_extensions());
+    $names = [];
+    foreach (scandir($dir) ?: [] as $name) {
+        if ($name === '.' || $name === '..') {
+            continue;
+        }
+        $path = $dir . '/' . $name;
+        if (!is_file($path)) {
+            continue;
+        }
+        $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+        if (!isset($extOk[$ext])) {
+            continue;
+        }
+        $names[] = $name;
+    }
+    if ($names === []) {
+        return null;
+    }
+    sort($names, SORT_NATURAL | SORT_FLAG_CASE);
+
+    return logohomes_web_path('assets/img/finishes/' . $names[0]);
 }
 
 /** Short award word for meta / lists: Gold, Silver, Bronze. */

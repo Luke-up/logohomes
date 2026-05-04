@@ -30,9 +30,10 @@
     <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
-        <li><a href="/designs">Designs</a></li>
         <li><a href="/faq">FAQ</a></li>
         <li><a href="/gallery-awards">Gallery</a></li>
+        <li><a href="/construction">Construction</a></li>
+        <li><a href="/finishes">Finishes</a></li>
         <li><a href="/contact">Contact</a></li>
     </ul>
     <br>

@@ -54,7 +54,7 @@ $projects = logohomes_projects_overview_records();
     </section>
 
     <nav class="page-section gallery-theme-ctas" aria-label="Gallery themes">
-        <ul class="gallery-theme-ctas-row">
+        <ul class="gallery-theme-ctas-row gallery-theme-ctas-row--two">
             <li class="gallery-theme-ctas-item">
                 <a class="gallery-theme-cta" href="/gallery/exteriors">
                     <span class="gallery-theme-cta-thumb">
@@ -69,22 +69,6 @@ $projects = logohomes_projects_overview_records();
                         <img src="/assets/img/gallery-awards-ctas/interiors.avif" alt="" width="320" height="427" loading="lazy" decoding="async">
                     </span>
                     <span class="gallery-theme-cta-label">Interiors</span>
-                </a>
-            </li>
-            <li class="gallery-theme-ctas-item">
-                <a class="gallery-theme-cta" href="/gallery/finishes">
-                    <span class="gallery-theme-cta-thumb">
-                        <img src="/assets/img/gallery-awards-ctas/finishes.avif" alt="" width="320" height="427" loading="lazy" decoding="async">
-                    </span>
-                    <span class="gallery-theme-cta-label">Finishes</span>
-                </a>
-            </li>
-            <li class="gallery-theme-ctas-item">
-                <a class="gallery-theme-cta" href="/gallery/during-construction">
-                    <span class="gallery-theme-cta-thumb">
-                        <img src="/assets/img/gallery-awards-ctas/during-construction.avif" alt="" width="320" height="427" loading="lazy" decoding="async">
-                    </span>
-                    <span class="gallery-theme-cta-label">During construction</span>
                 </a>
             </li>
         </ul>

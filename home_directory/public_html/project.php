@@ -89,10 +89,6 @@ $awardHero = logohomes_award_display_phrase($project['award']);
         <p>Add images under <code><?php echo htmlspecialchars($assetRel, ENT_QUOTES, 'UTF-8'); ?></code> (optionally <code>full/</code> and <code>thumb/</code> with matching filenames).</p>
     </section>
     <?php endif; ?>
-
-    <section class="page-section">
-        <p><a href="/awards">Awards</a> · <a href="/gallery-awards">Gallery</a></p>
-    </section>
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

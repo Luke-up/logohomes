@@ -51,7 +51,7 @@ $canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUr
         <meta property="og:image:width" content="383" />
         <meta property="og:image:height" content="117" />
         <meta property="og:image:type" content="image/png" />
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/assets/favicon.ico" sizes="any">
 
         <meta
         name="google-site-verification"
@@ -108,19 +108,14 @@ $canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUr
                         <a href="/about" <?php if ($currentPath === 'about') { echo 'aria-current="page" class="is-active"'; } ?>><span>About</span></a>
                     </li>
                     <li>
-                        <a href="/designs" <?php if ($currentPath === 'designs') { echo 'aria-current="page" class="is-active"'; } ?>><span>Designs</span></a>
-                    </li>
-                    <li>
                         <a href="/faq" <?php if ($currentPath === 'faq') { echo 'aria-current="page" class="is-active"'; } ?>><span>FAQ</span></a>
                     </li>
                     <?php
                     $galleryNavPaths = [
                         'gallery-awards',
-                        'awards',
+                        'projects',
                         'gallery/exteriors',
                         'gallery/interiors',
-                        'gallery/finishes',
-                        'gallery/during-construction',
                     ];
                     $galleryNavActive = in_array($currentPath, $galleryNavPaths, true)
                         || preg_match('#^projects/[a-z0-9-]+$#', $currentPath) === 1;
@@ -145,21 +140,21 @@ $canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUr
                                 <a href="/gallery/interiors" <?php if ($currentPath === 'gallery/interiors') { echo 'aria-current="page" class="is-active"'; } ?>><span>Interiors</span></a>
                             </li>
                             <li>
-                                <a href="/gallery/finishes" <?php if ($currentPath === 'gallery/finishes') { echo 'aria-current="page" class="is-active"'; } ?>><span>Finishes</span></a>
-                            </li>
-                            <li>
-                                <a href="/gallery/during-construction" <?php if ($currentPath === 'gallery/during-construction') { echo 'aria-current="page" class="is-active"'; } ?>><span>During construction</span></a>
-                            </li>
-                            <li>
-                                <a href="/awards" <?php
-                                if ($currentPath === 'awards') {
+                                <a href="/projects" <?php
+                                if ($currentPath === 'projects') {
                                     echo 'aria-current="page" class="is-active"';
                                 } elseif (preg_match('#^projects/[a-z0-9-]+$#', $currentPath) === 1) {
                                     echo 'class="is-active"';
                                 }
-                                ?>><span>Awards</span></a>
+                                ?>><span>Projects</span></a>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="/construction" <?php if ($currentPath === 'construction') { echo 'aria-current="page" class="is-active"'; } ?>><span>Construction</span></a>
+                    </li>
+                    <li>
+                        <a href="/finishes" <?php if ($currentPath === 'finishes') { echo 'aria-current="page" class="is-active"'; } ?>><span>Finishes</span></a>
                     </li>
                     <li>
                         <a href="/contact" <?php if ($currentPath === 'contact') { echo 'aria-current="page" class="is-active"'; } ?>><span>Contact</span></a>

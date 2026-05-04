@@ -221,6 +221,7 @@ body {
     padding: 0 20px;
     max-height: 100vh;
     margin-top: 0;
+    box-shadow: none;
   }
   #nav-main #menu-main-menu > li ul li {
     width: calc(100% + 30px);
@@ -373,6 +374,13 @@ body {
   margin: 0 auto;
   padding: 40px 0;
 }
+.featured-projects > h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  text-align: center;
+  color: #333333;
+  margin-top: 0;
+}
 .featured-projects .featured-projects-slider {
   overflow: hidden;
 }
@@ -473,11 +481,6 @@ body {
   height: 300px;
   margin: 0 15px;
   position: relative;
-}
-.featured-container .featured-slider .featured-award-link {
-  display: block;
-  text-decoration: none;
-  color: inherit;
 }
 .featured-container .featured-slider .listing-slide img {
   width: 100%;
@@ -1173,7 +1176,7 @@ footer .footer-container ul li a:hover {
   line-height: 1.4;
 }
 
-/* /awards: three landscape cards per row; overlay matches homepage Latest Awards */
+/* /projects listing: three landscape cards per row; overlay matches homepage Latest Awards strip */
 .content-page--awards .awards-project-grid {
   list-style: none;
   margin: 0 auto;
@@ -1984,6 +1987,221 @@ body.global-lightbox-open {
 
   .project-intro-facts {
     width: 100%;
+  }
+}
+
+/* Construction / Finishes: title keeps green rule; intro sits below without it */
+.content-page--construction .page-hero,
+.content-page--finishes-marketing .page-hero {
+  margin-bottom: 12px;
+}
+
+.content-page--construction .page-hero h1,
+.content-page--finishes-marketing .page-hero h1 {
+  margin-bottom: 0;
+}
+
+.content-page .page-intro-lede {
+  margin-bottom: 28px;
+}
+
+.content-page .page-intro-lede p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+/* Gallery hub: two theme tiles (exteriors + interiors) */
+.gallery-theme-ctas-row--two {
+  justify-content: center;
+  gap: 20px;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-page--construction .construction-progress-section {
+  margin-bottom: 28px;
+}
+
+.construction-progress-slider {
+  overflow: hidden;
+}
+
+.construction-progress-slide img {
+  display: block;
+  width: 100%;
+  max-height: min(56vw, 520px);
+  object-fit: cover;
+}
+
+.construction-beams-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 28px 32px;
+  align-items: center;
+}
+
+.construction-beams-copy p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #444444;
+}
+
+.construction-beams-figures {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 12px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.construction-beams-figure {
+  margin: 0;
+  width: 250px;
+  height: 350px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.construction-beams-figure img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content-page--finishes-marketing .finishes-highlight-section {
+  margin-top: 8px;
+  margin-bottom: 28px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(51, 51, 51, 0.18);
+  border-bottom: 1px solid rgba(51, 51, 51, 0.18);
+}
+
+.finishes-highlight-heading {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333333;
+  margin: 0 0 18px;
+  line-height: 1.35;
+}
+
+.finishes-highlight-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.finishes-highlight-split--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.finishes-highlight-copy p {
+  margin: 0;
+}
+
+.finishes-highlight-media img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: 400px;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 720px) {
+  /* Project page gallery: mobi — max height 350px, vertically centered */
+  .project-gallery-slider .slick-slide {
+    height: auto !important;
+  }
+
+  .project-gallery-slider .project-gallery-slide {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-gallery-slide-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    position: static;
+    overflow: visible;
+  }
+
+  .project-gallery-slide-btn img {
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 350px;
+    margin: 0 auto;
+    position: static;
+  }
+
+  /* Construction beams: two equal columns, fixed height */
+  .construction-beams-split {
+    grid-template-columns: 1fr;
+  }
+
+  .construction-beams-figures {
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    padding-bottom: 0;
+    box-sizing: border-box;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  .construction-beams-figure {
+    flex: 1 1 calc(50% - 5px);
+    width: auto;
+    min-width: 0;
+    max-width: calc(50% - 5px);
+    height: 250px;
+  }
+
+  /* Finishes highlight image: full content bleed width, square */
+  .finishes-highlight-split {
+    grid-template-columns: 1fr;
+  }
+
+  .content-page--finishes-marketing .finishes-highlight-media {
+    width: calc(100% + 40px);
+    max-width: none;
+    margin-left: -20px;
+    margin-right: -20px;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .content-page--finishes-marketing .finishes-highlight-media img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    object-fit: contain;
   }
 }
 

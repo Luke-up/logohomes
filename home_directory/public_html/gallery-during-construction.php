@@ -14,10 +14,6 @@ $galleryMosaicAriaLabel = 'During construction images';
     </section>
 
 <?php include __DIR__ . '/includes/partials/gallery-theme-mosaic.php'; ?>
-
-    <section class="page-section">
-        <p><a href="/gallery-awards">Gallery</a></p>
-    </section>
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>

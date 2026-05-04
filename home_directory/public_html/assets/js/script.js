@@ -10,26 +10,29 @@ $(function () {
         fade: true,
         autoplaySpeed: 5000
     });
-    $('.featured-slider').slick({
-        autoplay: true,
-        dots: false,
-        arrows: false,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        speed: 2000,
-        fade: false,
-        autoplaySpeed: 5000,
-        responsive: [
-            {
-                breakpoint: 1000,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
+    var $featuredSlider = $('.featured-slider');
+    if ($featuredSlider.children().length > 0) {
+        $featuredSlider.slick({
+            autoplay: true,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            speed: 2000,
+            fade: false,
+            autoplaySpeed: 5000,
+            responsive: [
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
                 },
-            },
-        ],
-    });
+            ],
+        });
+    }
     var $featuredProjectsSlider = $('.featured-projects-slider');
     if ($featuredProjectsSlider.length) {
         $featuredProjectsSlider.slick({
@@ -99,6 +102,22 @@ $(function () {
         });
         $(".project-gallery-nav-btn--next").on("click", function () {
             $projectSlider.slick("slickNext");
+        });
+    }
+
+    var $constructionSlider = $(".construction-progress-slider");
+    if ($constructionSlider.children().length > 0) {
+        $constructionSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 900,
+            fade: true,
+            pauseOnHover: true,
         });
     }
 

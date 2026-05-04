@@ -4,7 +4,6 @@ require_once __DIR__ . '/includes/gallery-helpers.php';
 
 $projects = logohomes_projects();
 $homeFeaturedProjects = [];
-$homeAwardProjects = [];
 
 foreach ($projects as $project) {
     $slug = $project['slug'];
@@ -31,28 +30,21 @@ foreach ($projects as $project) {
             'thumbs' => $thumbs,
         ];
     }
+}
 
-    $awardLabel = logohomes_award_label($project['award']);
-    $awardText = $awardLabel !== '' ? $awardLabel . ' - ' . $location : $location;
-    $featureThumb = $images[0]['thumbWeb'] ?? null;
-
-    if (is_string($featureThumb) && $featureThumb !== '') {
-        $homeAwardProjects[] = [
-            'slug' => $slug,
-            'title' => $title,
-            'awardText' => $awardText,
-            'thumb' => $featureThumb,
-        ];
-    }
+$homeAwardSlides = [];
+foreach (logohomes_home_awards_folder_slides() as $slide) {
+    $homeAwardSlides[] = [
+        'src' => $slide['src'],
+        'overlay' => $slide['label'],
+        'alt' => $slide['label'],
+    ];
 }
 ?>
 <?php include __DIR__ . '/includes/header.php'; ?>
 <div class="header">
     <div class="slider-container">
         <div class="header-slider">
-            <div>
-                <img src="/assets/img/header-slider/1.avif" alt="Logo Homes exterior shot">
-            </div>
             <div>
                 <img src="/assets/img/header-slider/2.avif" alt="Logo Homes exterior shot">
             </div>
@@ -64,9 +56,6 @@ foreach ($projects as $project) {
             </div>
             <div>
                 <img src="/assets/img/header-slider/5.avif" alt="Logo Homes exterior shot">
-            </div>
-            <div>
-                <img src="/assets/img/header-slider/6.avif" alt="Logo Homes exterior shot">
             </div>
         </div>
     </div>
@@ -103,6 +92,7 @@ foreach ($projects as $project) {
 </div>
 
 <div class="featured-projects">
+    <h3>Latest Projects</h3>
     <div class="featured-projects-slider">
         <?php foreach ($homeFeaturedProjects as $project) : ?>
         <div>
@@ -136,23 +126,23 @@ foreach ($projects as $project) {
     </div>
 </div>
 
+<?php if ($homeAwardSlides !== []) : ?>
 <div class="featured-container">
     <h3>Latest Awards</h3>
     <div class="featured-slider">
-        <?php foreach ($homeAwardProjects as $project) : ?>
+        <?php foreach ($homeAwardSlides as $slide) : ?>
         <div>
-            <a class="featured-award-link" href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>">
-                <div class="listing-slide">
-                    <img src="<?php echo htmlspecialchars($project['thumb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
-                    <div class="text">
-                        <p><?php echo htmlspecialchars($project['awardText'], ENT_QUOTES, 'UTF-8'); ?></p>
-                    </div>
+            <div class="listing-slide">
+                <img src="<?php echo htmlspecialchars($slide['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($slide['alt'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                <div class="text">
+                    <p><?php echo htmlspecialchars($slide['overlay'], ENT_QUOTES, 'UTF-8'); ?></p>
                 </div>
-            </a>
+            </div>
         </div>
         <?php endforeach; ?>
     </div>
 </div>
+<?php endif; ?>
 
 <div class="call-to-action">
     <a href="https://www.facebook.com/pages/Logo-Homes/882329498476445" target="blank">
