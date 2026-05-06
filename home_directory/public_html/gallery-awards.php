@@ -15,13 +15,13 @@ $projects = logohomes_projects_overview_records();
         <h2 class="visually-hidden">Awarded projects overview</h2>
         <div class="gallery-awards-overview-inner">
             <div class="gallery-awards-image-slider">
-                <?php foreach ($projects as $project) :
+                <?php foreach ($projects as $idx => $project) :
                     $thumb = logohomes_project_feature_thumb_web($project['slug']);
                     ?>
                 <div class="gallery-awards-image-slide">
                     <a href="/projects/<?php echo htmlspecialchars($project['slug'], ENT_QUOTES, 'UTF-8'); ?>">
                         <?php if ($thumb !== null) : ?>
-                        <img src="<?php echo htmlspecialchars($thumb, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                        <img src="<?php echo htmlspecialchars($thumb, ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($project['title'], ENT_QUOTES, 'UTF-8'); ?>" loading="<?php echo $idx < 3 ? 'eager' : 'lazy'; ?>" decoding="async">
                         <?php else : ?>
                         <span class="gallery-awards-image-placeholder" aria-hidden="true">
                             <span class="gallery-awards-image-placeholder-label">Image coming soon</span>
@@ -54,21 +54,45 @@ $projects = logohomes_projects_overview_records();
     </section>
 
     <nav class="page-section gallery-theme-ctas" aria-label="Gallery themes">
-        <ul class="gallery-theme-ctas-row gallery-theme-ctas-row--two">
-            <li class="gallery-theme-ctas-item">
+        <ul class="gallery-theme-ctas-row gallery-theme-ctas-row--five">
+            <li class="gallery-theme-ctas-item gallery-theme-ctas-item--portrait">
+                <a class="gallery-theme-cta" href="/gallery/interiors">
+                    <span class="gallery-theme-cta-thumb">
+                        <img src="/assets/gallery/interiors/thumb/Bedroom.avif" alt="" loading="lazy" decoding="async">
+                    </span>
+                    <span class="gallery-theme-cta-label">Interiors</span>
+                </a>
+            </li>
+            <li class="gallery-theme-ctas-item gallery-theme-ctas-item--portrait">
+                <a class="gallery-theme-cta" href="/gallery/details">
+                    <span class="gallery-theme-cta-thumb">
+                        <img src="/assets/gallery/details/thumb/Post_cornice.avif" alt="" loading="lazy" decoding="async">
+                    </span>
+                    <span class="gallery-theme-cta-label">Details</span>
+                </a>
+            </li>
+            <li class="gallery-theme-ctas-item gallery-theme-ctas-item--portrait">
+                <a class="gallery-theme-cta" href="/gallery/stairs">
+                    <span class="gallery-theme-cta-thumb">
+                        <img src="/assets/gallery/stairs/thumb/Basic_stairs_and_railings.avif" alt="" loading="lazy" decoding="async">
+                    </span>
+                    <span class="gallery-theme-cta-label">Stairs</span>
+                </a>
+            </li>
+            <li class="gallery-theme-ctas-item gallery-theme-ctas-item--landscape">
                 <a class="gallery-theme-cta" href="/gallery/exteriors">
                     <span class="gallery-theme-cta-thumb">
-                        <img src="/assets/img/gallery-awards-ctas/exteriors.avif" alt="" width="320" height="427" loading="lazy" decoding="async">
+                        <img src="/assets/gallery/exteriors/thumb/Silver_Award_Castle_Rock.avif" alt="" loading="lazy" decoding="async">
                     </span>
                     <span class="gallery-theme-cta-label">Exteriors</span>
                 </a>
             </li>
-            <li class="gallery-theme-ctas-item">
-                <a class="gallery-theme-cta" href="/gallery/interiors">
+            <li class="gallery-theme-ctas-item gallery-theme-ctas-item--landscape">
+                <a class="gallery-theme-cta" href="/gallery/decks">
                     <span class="gallery-theme-cta-thumb">
-                        <img src="/assets/img/gallery-awards-ctas/interiors.avif" alt="" width="320" height="427" loading="lazy" decoding="async">
+                        <img src="/assets/gallery/decks/thumb/Pool_and_cable_railings.avif" alt="" loading="lazy" decoding="async">
                     </span>
-                    <span class="gallery-theme-cta-label">Interiors</span>
+                    <span class="gallery-theme-cta-label">Decks</span>
                 </a>
             </li>
         </ul>

@@ -145,10 +145,17 @@ foreach (logohomes_home_awards_folder_slides() as $slide) {
 <?php endif; ?>
 
 <div class="call-to-action">
-    <a href="https://www.facebook.com/pages/Logo-Homes/882329498476445" target="blank">
+    <a href="/gallery">
         <div class="facebook cta">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" width="150px" height="150px">    <path d="M25,3C12.85,3,3,12.85,3,25c0,11.03,8.125,20.137,18.712,21.728V30.831h-5.443v-5.783h5.443v-3.848 c0-6.371,3.104-9.168,8.399-9.168c2.536,0,3.877,0.188,4.512,0.274v5.048h-3.612c-2.248,0-3.033,2.131-3.033,4.533v3.161h6.588 l-0.894,5.783h-5.694v15.944C38.716,45.318,47,36.137,47,25C47,12.85,37.15,3,25,3z"/></svg>
-            <p>Follow us</p>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="150px" height="150px" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" fill="#000000"/>
+                <rect x="8" y="7.2" width="8" height="9.6" rx="0.7" stroke="#ffffff" stroke-width="0.75"/>
+                <rect x="9.1" y="8.4" width="5.8" height="5" rx="0.45" stroke="#ffffff" stroke-width="0.72"/>
+                <path d="M9.75 12.8 11.2 11.3 12.25 12.35 13.05 11.55 14.25 12.8" stroke="#ffffff" stroke-width="0.68" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="13.55" cy="9.75" r="0.34" fill="#ffffff"/>
+                <rect x="10.75" y="14.5" width="2.5" height="1.05" rx="0.34" fill="#ffffff"/>
+            </svg>
+            <p>View Gallery</p>
         </div>
     </a>
     <a href="/faq">

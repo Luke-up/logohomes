@@ -1533,6 +1533,32 @@ footer .footer-container ul li a:hover {
   min-width: 0;
 }
 
+.gallery-theme-ctas-row--five {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.gallery-theme-ctas-row--five .gallery-theme-ctas-item {
+  min-width: 0;
+}
+
+.gallery-theme-ctas-row--five .gallery-theme-ctas-item:nth-child(-n+3) {
+  grid-column: span 2;
+}
+
+.gallery-theme-ctas-row--five .gallery-theme-ctas-item:nth-child(n+4) {
+  grid-column: span 3;
+}
+
+.gallery-theme-ctas-item--portrait .gallery-theme-cta-thumb {
+  aspect-ratio: 4 / 5;
+}
+
+.gallery-theme-ctas-item--landscape .gallery-theme-cta-thumb {
+  aspect-ratio: 16 / 10;
+}
+
 .gallery-theme-cta {
   display: flex;
   flex-direction: column;
@@ -1589,6 +1615,15 @@ footer .footer-container ul li a:hover {
 }
 
 @media screen and (max-width: 768px) {
+  .content-page--gallery-hub .gallery-theme-ctas-row--five {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .content-page--gallery-hub .gallery-theme-ctas-row--five .gallery-theme-ctas-item:nth-child(-n+3),
+  .content-page--gallery-hub .gallery-theme-ctas-row--five .gallery-theme-ctas-item:nth-child(n+4) {
+    grid-column: span 1;
+  }
+
   .content-page--gallery-hub .gallery-theme-ctas-row {
     flex-wrap: wrap;
     justify-content: center;
@@ -2037,6 +2072,61 @@ body.global-lightbox-open {
   object-fit: cover;
 }
 
+.construction-updates-section {
+  margin-bottom: 32px;
+}
+
+.construction-updates-heading {
+  margin: 0 0 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333333;
+  text-align: left;
+}
+
+.construction-updates-row {
+  display: grid;
+  gap: 12px;
+}
+
+.construction-updates-row + .construction-updates-row {
+  margin-top: 14px;
+}
+
+.construction-updates-row--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.construction-updates-row--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.construction-beams-section .construction-updates-row--three {
+  margin-top: 26px;
+}
+
+.construction-updates-card {
+  margin: 0;
+}
+
+.construction-updates-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+}
+
+.construction-updates-card figcaption {
+  margin-top: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.3;
+  color: #4a4a4a;
+  text-align: center;
+}
+
 .construction-beams-split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -2155,6 +2245,10 @@ body.global-lightbox-open {
 
   /* Construction beams: two equal columns, fixed height */
   .construction-beams-split {
+    grid-template-columns: 1fr;
+  }
+
+  .construction-updates-row--three {
     grid-template-columns: 1fr;
   }
 

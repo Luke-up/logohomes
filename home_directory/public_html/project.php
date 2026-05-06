@@ -52,7 +52,7 @@ $awardHero = logohomes_award_display_phrase($project['award']);
     <section class="page-section project-gallery-section" aria-label="Project gallery">
         <div class="project-gallery-shell">
             <div class="project-gallery-slider">
-                <?php foreach ($galleryImages as $img) :
+                <?php foreach ($galleryImages as $idx => $img) :
                     $heading = $img['heading'];
                     $cap = $img['caption'] !== '' ? $img['caption'] : '';
                     if ($cap !== '' && $cap === $heading) {
@@ -68,7 +68,7 @@ $awardHero = logohomes_award_display_phrase($project['award']);
                         data-heading="<?php echo htmlspecialchars($heading, ENT_QUOTES, 'UTF-8'); ?>"
                         aria-label="Open larger image: <?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
                     >
-                        <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                        <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="<?php echo $idx < 3 ? 'eager' : 'lazy'; ?>" decoding="async">
                     </button>
                 </div>
                 <?php endforeach; ?>

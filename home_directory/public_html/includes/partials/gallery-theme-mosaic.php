@@ -25,9 +25,22 @@ $mosaicAria = isset($galleryMosaicAriaLabel) && $galleryMosaicAriaLabel !== ''
     <?php if ($sectionImages !== []) : ?>
     <section class="page-section gallery-mosaic-section" aria-label="<?php echo htmlspecialchars($mosaicAria, ENT_QUOTES, 'UTF-8'); ?>">
         <div class="gallery-mosaic">
-            <?php foreach ($sectionImages as $img) :
+            <?php foreach ($sectionImages as $idx => $img) :
                 $fn = $img['filename'];
                 $label = $img['label'] ?? $fn;
+                $loadMode = 'lazy';
+                if (
+                    in_array($galleryAssetBase, [
+                        'assets/gallery/exteriors',
+                        'assets/gallery/interiors',
+                        'assets/gallery/details',
+                        'assets/gallery/stairs',
+                        'assets/gallery/decks',
+                    ], true)
+                    && $idx < 6
+                ) {
+                    $loadMode = 'eager';
+                }
                 ?>
             <button
                 type="button"
@@ -37,7 +50,7 @@ $mosaicAria = isset($galleryMosaicAriaLabel) && $galleryMosaicAriaLabel !== ''
                 aria-label="Open image: <?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>"
             >
                 <span class="gallery-mosaic-item-inner">
-                    <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                    <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?>" loading="<?php echo $loadMode; ?>" decoding="async">
                 </span>
                 <span class="gallery-mosaic-filename"><?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?></span>
             </button>

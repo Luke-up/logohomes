@@ -9,10 +9,13 @@ include __DIR__ . '/includes/header.php';
     <li><a href="/faq">FAQ</a></li>
     <li><a href="/construction">Construction</a></li>
     <li><a href="/finishes">Finishes</a></li>
-    <li><a href="/gallery-awards">Gallery</a>
+    <li><a href="/gallery">Gallery</a>
         <ul>
             <li><a href="/gallery/exteriors">Gallery — Exteriors</a></li>
             <li><a href="/gallery/interiors">Gallery — Interiors</a></li>
+            <li><a href="/gallery/details">Gallery — Details</a></li>
+            <li><a href="/gallery/stairs">Gallery — Stairs</a></li>
+            <li><a href="/gallery/decks">Gallery — Decks</a></li>
             <li><a href="/projects">Projects</a>
                 <ul>
                     <?php foreach (logohomes_projects() as $p) : ?>

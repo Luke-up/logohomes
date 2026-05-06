@@ -101,7 +101,7 @@ function logohomes_humanize_image_heading(string $filename): string
 }
 
 /**
- * Theme feature mosaic label: strip any extension, replace "-" with spaces (filename as typed, not title case).
+ * Theme feature mosaic label: strip any extension, replace "-" / "_" with spaces (filename as typed, not title case).
  */
 function logohomes_theme_feature_tile_label(string $filename): string
 {
@@ -109,7 +109,7 @@ function logohomes_theme_feature_tile_label(string $filename): string
     if (!is_string($base) || $base === '') {
         $base = $filename;
     }
-    $label = str_replace('-', ' ', $base);
+    $label = str_replace(['-', '_'], ' ', $base);
     $label = trim(preg_replace('/\s+/', ' ', $label) ?? '');
 
     return $label === '' ? $filename : $label;

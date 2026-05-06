@@ -112,22 +112,25 @@ $canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUr
                     </li>
                     <?php
                     $galleryNavPaths = [
-                        'gallery-awards',
+                        'gallery',
                         'projects',
                         'gallery/exteriors',
                         'gallery/interiors',
+                        'gallery/details',
+                        'gallery/stairs',
+                        'gallery/decks',
                     ];
                     $galleryNavActive = in_array($currentPath, $galleryNavPaths, true)
                         || preg_match('#^projects/[a-z0-9-]+$#', $currentPath) === 1;
                     ?>
                     <li class="menu-item-has-children">
                         <a
-                            href="/gallery-awards"
+                            href="/gallery"
                             <?php
                             if ($galleryNavActive) {
                                 echo 'class="is-active"';
                             }
-                            if ($currentPath === 'gallery-awards') {
+                            if ($currentPath === 'gallery') {
                                 echo ' aria-current="page"';
                             }
                             ?>
@@ -138,6 +141,15 @@ $canonicalUrl = isset($canonicalUrl) && is_string($canonicalUrl) && $canonicalUr
                             </li>
                             <li>
                                 <a href="/gallery/interiors" <?php if ($currentPath === 'gallery/interiors') { echo 'aria-current="page" class="is-active"'; } ?>><span>Interiors</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/details" <?php if ($currentPath === 'gallery/details') { echo 'aria-current="page" class="is-active"'; } ?>><span>Details</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/stairs" <?php if ($currentPath === 'gallery/stairs') { echo 'aria-current="page" class="is-active"'; } ?>><span>Stairs</span></a>
+                            </li>
+                            <li>
+                                <a href="/gallery/decks" <?php if ($currentPath === 'gallery/decks') { echo 'aria-current="page" class="is-active"'; } ?>><span>Decks</span></a>
                             </li>
                             <li>
                                 <a href="/projects" <?php

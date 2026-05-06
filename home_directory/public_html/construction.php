@@ -22,13 +22,25 @@ $constructionSlides = logohomes_construction_progress_slide_urls();
             <?php foreach ($constructionSlides as $idx => $src) : ?>
             <div>
                 <div class="construction-progress-slide">
-                    <img src="<?php echo htmlspecialchars($src, ENT_QUOTES, 'UTF-8'); ?>" alt="Construction progress, photo <?php echo (int) ($idx + 1); ?>" loading="<?php echo $idx === 0 ? 'eager' : 'lazy'; ?>" decoding="async">
+                    <img src="<?php echo htmlspecialchars($src, ENT_QUOTES, 'UTF-8'); ?>" alt="Construction progress, photo <?php echo (int) ($idx + 1); ?>" loading="<?php echo $idx < 3 ? 'eager' : 'lazy'; ?>" decoding="async">
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
     </section>
     <?php endif; ?>
+
+    <section class="page-section construction-updates-section" aria-label="Gans Baai under construction updates">
+        <h2 class="construction-updates-heading">Gans Baai Under construction</h2>
+        <div class="construction-updates-row construction-updates-row--two">
+            <figure class="construction-updates-card">
+                <img src="/assets/img/construction/Gans_Baai_under_construction_1.avif" alt="Gans Baai under construction 1" loading="lazy" decoding="async">
+            </figure>
+            <figure class="construction-updates-card">
+                <img src="/assets/img/construction/Gans_Baai_under_construction_2.avif" alt="Gans Baai under construction 2" loading="lazy" decoding="async">
+            </figure>
+        </div>
+    </section>
 
     <section class="page-section construction-beams-section" aria-label="Structural timber detail">
         <div class="construction-beams-split">
@@ -43,6 +55,20 @@ $constructionSlides = logohomes_construction_progress_slide_urls();
                     <img src="/assets/img/construction/beams_finish.avif" alt="Timber beams finished" width="250" height="350" loading="lazy" decoding="async">
                 </figure>
             </div>
+        </div>
+        <div class="construction-updates-row construction-updates-row--three">
+            <figure class="construction-updates-card construction-updates-card--captioned">
+                <img src="/assets/img/construction/Cottage_under_construction.avif" alt="Cottage under construction" loading="lazy" decoding="async">
+                <figcaption>Cottage under construction</figcaption>
+            </figure>
+            <figure class="construction-updates-card construction-updates-card--captioned">
+                <img src="/assets/img/construction/Pine_cladding_installation.avif" alt="Pine cladding installation" loading="lazy" decoding="async">
+                <figcaption>Pine cladding installation</figcaption>
+            </figure>
+            <figure class="construction-updates-card construction-updates-card--captioned">
+                <img src="/assets/img/construction/Poles_bearers_and_joist.avif" alt="Poles bearers and joist" loading="lazy" decoding="async">
+                <figcaption>Poles bearers and joist</figcaption>
+            </figure>
         </div>
     </section>
 </main>

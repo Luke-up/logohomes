@@ -11,8 +11,11 @@ if ($path == '' || $path == 'home') {
     include 'construction.php';
 } elseif ($path == 'finishes') {
     include 'finishes.php';
-} elseif ($path == 'gallery-awards') {
+} elseif ($path == 'gallery') {
     include 'gallery-awards.php';
+} elseif ($path == 'gallery-awards') {
+    header('Location: /gallery', true, 301);
+    exit;
 } elseif ($path == 'projects') {
     include 'projects.php';
 } elseif ($path == 'awards') {
@@ -22,6 +25,12 @@ if ($path == '' || $path == 'home') {
     include 'gallery-exteriors.php';
 } elseif ($path == 'gallery/interiors') {
     include 'gallery-interiors.php';
+} elseif ($path == 'gallery/details') {
+    include 'gallery-details.php';
+} elseif ($path == 'gallery/stairs') {
+    include 'gallery-stairs.php';
+} elseif ($path == 'gallery/decks') {
+    include 'gallery-decks.php';
 } elseif ($path == 'gallery/finishes') {
     header('Location: /finishes', true, 301);
     exit;
