@@ -5,25 +5,38 @@ if ($path == '' || $path == 'home') {
     include 'home.php';
 } elseif ($path == 'about') {
     include 'about.php';
-} elseif ($path == 'designs') {
-    include 'designs.php';
 } elseif ($path == 'faq') {
     include 'faq.php';
-} elseif ($path == 'gallery-awards') {
+} elseif ($path == 'construction') {
+    include 'construction.php';
+} elseif ($path == 'finishes') {
+    include 'finishes.php';
+} elseif ($path == 'gallery') {
     include 'gallery-awards.php';
-} elseif ($path == 'awards') {
-    include 'awards.php';
+} elseif ($path == 'gallery-awards') {
+    header('Location: /gallery', true, 301);
+    exit;
 } elseif ($path == 'projects') {
-    header('Location: /awards', true, 302);
+    include 'projects.php';
+} elseif ($path == 'awards') {
+    header('Location: /projects', true, 301);
     exit;
 } elseif ($path == 'gallery/exteriors') {
     include 'gallery-exteriors.php';
 } elseif ($path == 'gallery/interiors') {
     include 'gallery-interiors.php';
+} elseif ($path == 'gallery/details') {
+    include 'gallery-details.php';
+} elseif ($path == 'gallery/stairs') {
+    include 'gallery-stairs.php';
+} elseif ($path == 'gallery/decks') {
+    include 'gallery-decks.php';
 } elseif ($path == 'gallery/finishes') {
-    include 'gallery-finishes.php';
+    header('Location: /finishes', true, 301);
+    exit;
 } elseif ($path == 'gallery/during-construction') {
-    include 'gallery-during-construction.php';
+    header('Location: /construction', true, 301);
+    exit;
 } elseif (preg_match('#^projects/([a-z0-9-]+)$#', $path, $projectPathMatch)) {
     $projectSlug = $projectPathMatch[1];
     include 'project.php';
@@ -31,6 +44,8 @@ if ($path == '' || $path == 'home') {
     include 'sitemap.php';
 } elseif ($path == 'contact') {
     include 'contact.php';
+} elseif ($path == 'privacy-policy') {
+    include 'privacy-policy.php';
 } else {
     include '404.php';
 }

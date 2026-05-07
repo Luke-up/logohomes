@@ -1,0 +1,68 @@
+@use "tokens" as *;
+
+.content-page {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 50px 20px 80px;
+
+  .page-hero {
+    border-left: 4px solid var(--brand-green);
+    padding-left: 16px;
+    margin-bottom: 32px;
+
+    h1 {
+      margin: 0 0 12px;
+      font-family: $font-arial;
+      color: #666666;
+    }
+
+    p {
+      margin: 0;
+      font-family: $font-arial;
+      color: #333333;
+    }
+  }
+
+  .page-section {
+    margin-bottom: 28px;
+
+    h2 {
+      font-family: $font-arial;
+      color: var(--brand-green);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0 0 10px;
+    }
+
+    p {
+      margin: 0;
+      font-family: $font-arial;
+      font-size: 15px;
+      color: #333333;
+      line-height: 1.6;
+    }
+  }
+
+  .page-intro-lede {
+    margin-bottom: 28px;
+
+    p {
+      margin: 0;
+      font-family: $font-arial;
+      font-size: 15px;
+      color: #333333;
+      line-height: 1.6;
+    }
+  }
+}
+
+/* Construction / Finishes: title keeps green rule; intro sits below without it */
+.content-page--construction .page-hero,
+.content-page--finishes-marketing .page-hero {
+  margin-bottom: 12px;
+
+  h1 {
+    margin-bottom: 0;
+  }
+}

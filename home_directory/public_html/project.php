@@ -5,8 +5,8 @@
  * Project copy and award metadata: includes/projects-data.php
  * Image discovery: includes/gallery-helpers.php
  */
-require_once __DIR__ . '/../includes/projects-data.php';
-require_once __DIR__ . '/../includes/gallery-helpers.php';
+require_once __DIR__ . '/includes/projects-data.php';
+require_once __DIR__ . '/includes/gallery-helpers.php';
 
 $slug = $projectSlug ?? '';
 $project = logohomes_project_by_slug($slug);
@@ -21,7 +21,7 @@ $galleryImages = logohomes_collect_gallery_images($assetRel);
 $awardLabel = logohomes_award_label($project['award']);
 $awardHero = logohomes_award_display_phrase($project['award']);
 ?>
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="content-page content-page--gallery content-page--project">
     <section class="page-hero page-hero--project">
@@ -52,8 +52,12 @@ $awardHero = logohomes_award_display_phrase($project['award']);
     <section class="page-section project-gallery-section" aria-label="Project gallery">
         <div class="project-gallery-shell">
             <div class="project-gallery-slider">
-                <?php foreach ($galleryImages as $img) :
-                    $cap = $img['caption'] !== '' ? $img['caption'] : $img['heading'];
+                <?php foreach ($galleryImages as $idx => $img) :
+                    $heading = $img['heading'];
+                    $cap = $img['caption'] !== '' ? $img['caption'] : '';
+                    if ($cap !== '' && $cap === $heading) {
+                        $cap = '';
+                    }
                     ?>
                 <div class="project-gallery-slide">
                     <button
@@ -61,10 +65,10 @@ $awardHero = logohomes_award_display_phrase($project['award']);
                         class="project-gallery-slide-btn js-lightbox-trigger"
                         data-full-src="<?php echo htmlspecialchars($img['fullWeb'], ENT_QUOTES, 'UTF-8'); ?>"
                         data-caption="<?php echo htmlspecialchars($cap, ENT_QUOTES, 'UTF-8'); ?>"
-                        data-heading="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
+                        data-heading="<?php echo htmlspecialchars($heading, ENT_QUOTES, 'UTF-8'); ?>"
                         aria-label="Open larger image: <?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>"
                     >
-                        <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="lazy" decoding="async">
+                        <img src="<?php echo htmlspecialchars($img['thumbWeb'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($img['heading'], ENT_QUOTES, 'UTF-8'); ?>" loading="<?php echo $idx < 3 ? 'eager' : 'lazy'; ?>" decoding="async">
                     </button>
                 </div>
                 <?php endforeach; ?>
@@ -85,10 +89,6 @@ $awardHero = logohomes_award_display_phrase($project['award']);
         <p>Add images under <code><?php echo htmlspecialchars($assetRel, ENT_QUOTES, 'UTF-8'); ?></code> (optionally <code>full/</code> and <code>thumb/</code> with matching filenames).</p>
     </section>
     <?php endif; ?>
-
-    <section class="page-section">
-        <p><a href="/awards">Awards</a> · <a href="/gallery-awards">Gallery</a></p>
-    </section>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

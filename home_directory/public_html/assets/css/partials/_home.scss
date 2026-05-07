@@ -1,0 +1,427 @@
+@use "tokens" as *;
+
+.header {
+  position: relative;
+  height: calc(100vh - 130px);
+
+  @media screen and (max-width: $bp-nav) {
+    height: 300px;
+  }
+
+  .slider-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .header-slider {
+      width: 100%;
+      height: 100%;
+
+      .slick-list {
+        height: 100%;
+
+        .slick-track {
+          height: 100%;
+
+          .slick-slide > div {
+            height: 100%;
+
+            > div {
+              height: 100%;
+            }
+          }
+
+          img {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+
+  .social-links {
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    ul {
+      padding: 0;
+      margin: 0;
+
+      li {
+        list-style: none;
+
+        a {
+          height: 45px;
+          width: 40px;
+          display: block;
+          background-color: #ffffff;
+          align-content: center;
+          text-align: center;
+          transition: all 0.3s ease-in-out;
+          padding-top: 5px;
+
+          svg {
+            fill: #333333;
+
+            path {
+              fill: #333333;
+            }
+          }
+
+          &:hover {
+            background-color: var(--brand-green);
+
+            svg {
+              fill: #ffffff;
+
+              path {
+                fill: #ffffff;
+              }
+            }
+          }
+        }
+
+        &:first-of-type a {
+          border-top-left-radius: 4px;
+        }
+
+        &:last-of-type a {
+          border-bottom-left-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+#welcome-section {
+  padding: 80px 0 50px;
+  max-width: 700px;
+  margin: 0 auto;
+
+  @media screen and (max-width: $bp-nav) {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 48px 20px 40px;
+  }
+
+  h1 {
+    font-family: $font-arial;
+    font-size: 32px;
+    text-align: center;
+    color: #333333;
+  }
+
+  p {
+    font-family: $font-arial;
+    text-align: center;
+    color: #333333;
+  }
+
+  .btn-container {
+    text-align: center;
+    margin-top: 30px;
+
+    a {
+      background-color: var(--brand-green);
+      color: #000000;
+      font-family: $font-arial;
+      transition: all 0.3s ease-in-out;
+      padding: 8px 12px;
+      border: solid 1px #000000;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #000000;
+        color: #ffffff;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.featured-projects {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  @media screen and (max-width: $bp-nav) {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 32px 16px;
+  }
+
+  > h3 {
+    font-family: $font-arial;
+    font-size: 28px;
+    text-align: center;
+    color: #333333;
+    margin-top: 0;
+  }
+
+  .featured-projects-slider {
+    overflow: hidden;
+
+    .project {
+      display: flex;
+
+      @media screen and (max-width: $bp-nav) {
+        flex-direction: column;
+      }
+
+      .image-container {
+        position: relative;
+        width: 640px;
+        min-width: 640px;
+        display: flex;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: $bp-nav) {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .project-link-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+        }
+
+        img:nth-of-type(1) {
+          position: relative;
+          height: 300px;
+          width: 100%;
+          -o-object-fit: cover;
+          object-fit: cover;
+          margin-bottom: 20px;
+        }
+
+        img:nth-of-type(2) {
+          height: 180px;
+          width: calc(50% - 10px);
+          -o-object-fit: cover;
+          object-fit: cover;
+          margin-right: 20px;
+        }
+
+        img:nth-of-type(3) {
+          height: 180px;
+          width: calc(50% - 10px);
+          -o-object-fit: cover;
+          object-fit: cover;
+        }
+      }
+
+      .information {
+        flex: 1;
+        padding-left: 20px;
+
+        @media screen and (max-width: $bp-nav) {
+          padding-left: 0;
+          padding-top: 16px;
+          position: relative;
+          min-height: 56px;
+        }
+
+        h3 a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: var(--brand-green);
+          }
+        }
+
+        .navigation {
+          position: absolute;
+          display: flex;
+          gap: 5px;
+          bottom: 0;
+          right: 0;
+
+          @media screen and (max-width: $bp-nav) {
+            position: relative;
+            bottom: auto;
+            right: auto;
+            justify-content: flex-end;
+            margin-top: 12px;
+          }
+
+          .next-arrow,
+          .prev-arrow {
+            display: block;
+            border: 1px solid #333333;
+            height: 40px;
+            width: 40px;
+            text-align: center;
+            align-content: center;
+            transition: all 0.3s ease-in-out;
+
+            svg {
+              transition: all 0.3s ease-in-out;
+            }
+
+            &:hover {
+              background-color: var(--brand-green);
+              cursor: pointer;
+
+              svg path {
+                stroke: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.featured-container {
+  max-width: 970px;
+  margin: 0 auto;
+  padding: 40px 0;
+
+  @media screen and (max-width: $bp-nav) {
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 32px 16px;
+  }
+
+  h3 {
+    font-family: $font-arial;
+    font-size: 28px;
+    text-align: center;
+    color: #333333;
+    margin-top: 0;
+  }
+
+  .featured-slider {
+    overflow: hidden;
+
+    .listing-slide {
+      height: 300px;
+      margin: 0 15px;
+      position: relative;
+
+      @media screen and (max-width: $bp-nav) {
+        margin: 0 6px;
+      }
+
+      img {
+        width: 100%;
+        height: 300px;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+
+      .text {
+        display: block;
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.537254902);
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease-in-out;
+
+        p {
+          margin-top: 150px;
+          transform: translateY(-50%);
+          text-align: center;
+          font-family: $font-arial;
+          color: #333333;
+          font-weight: 600;
+          transition: all 0.5s ease-in-out;
+
+          @media screen and (max-width: $bp-nav) {
+            margin-top: 100px;
+          }
+        }
+      }
+
+      &:hover {
+        .text {
+          height: 40px;
+          left: 0;
+          background-color: rgba(255, 255, 255, 0.8549019608);
+        }
+
+        p {
+          margin-top: 10px;
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+}
+
+.call-to-action {
+  max-width: 940px;
+  margin: 0 auto;
+  padding: 40px 0;
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+
+  @media screen and (max-width: $bp-nav) {
+    flex-direction: column;
+    align-items: stretch;
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 32px 20px 40px;
+    gap: 14px;
+  }
+
+  a {
+    width: calc(33.3333333333% - 20px);
+    text-align: center;
+    text-decoration: none;
+
+    @media screen and (max-width: $bp-nav) {
+      width: 100%;
+      max-width: none;
+    }
+
+    &:hover .cta svg {
+      scale: 1.2;
+    }
+  }
+
+  .cta {
+    display: block;
+    border: 1px solid #000000;
+
+    p {
+      padding: 20px 50px;
+      background-color: var(--brand-green);
+      color: #000000;
+      margin: 0;
+      font-family: $font-arial;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    svg {
+      padding: 20px 30px;
+      width: 80px;
+      height: 95px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    &.faq svg {
+      width: 110px;
+    }
+
+    &.contact svg {
+      width: 95px;
+    }
+  }
+}

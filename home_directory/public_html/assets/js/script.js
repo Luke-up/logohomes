@@ -10,40 +10,75 @@ $(function () {
         fade: true,
         autoplaySpeed: 5000
     });
-    $('.featured-slider').slick({
-        autoplay: true,
-        dots: false,
-        arrows: false,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        speed: 2000,
-        fade: false,
-        autoplaySpeed: 5000
-    });
-    $('.featured-projects-slider').slick({
-        autoplay: false,
-        dots: false,
-        arrows: true,
-        infinite: true,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        speed: 500,
-        fade: true,
-        prevArrow: $('.prev-arrow'),
-        nextArrow: $('.next-arrow'),
-    });
+    var $featuredSlider = $('.featured-slider');
+    if ($featuredSlider.children().length > 0) {
+        $featuredSlider.slick({
+            autoplay: true,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            speed: 2000,
+            fade: false,
+            autoplaySpeed: 5000,
+            responsive: [
+                {
+                    breakpoint: 1000,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                    },
+                },
+            ],
+        });
+    }
+    var $featuredProjectsSlider = $('.featured-projects-slider');
+    if ($featuredProjectsSlider.length) {
+        $featuredProjectsSlider.slick({
+            autoplay: false,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 500,
+            fade: true,
+        });
+        $('.featured-projects .prev-arrow').on('click', function (e) {
+            e.preventDefault();
+            $featuredProjectsSlider.slick('slickPrev');
+        });
+        $('.featured-projects .next-arrow').on('click', function (e) {
+            e.preventDefault();
+            $featuredProjectsSlider.slick('slickNext');
+        });
+    }
 
-    $("#mobi-hamburger-open").click(function() {
-        event.stopPropagation();
-        console.log("Hamburger clicked, adding 'active' class");
-        $("#menu-main-menu").addClass("active");
+    var $mobiMenu = $("#menu-main-menu");
+    var $mobiToggle = $("#nav-mobi-toggle");
+    function setMobiMenuOpen(open) {
+        $mobiMenu.toggleClass("active", !!open);
+        $("#nav-main").toggleClass("menu-open", !!open);
+        if ($mobiToggle.length) {
+            $mobiToggle.attr("aria-expanded", open ? "true" : "false");
+            $mobiToggle.attr("aria-label", open ? "Close menu" : "Open menu");
+        }
+    }
+    $mobiToggle.on("click", function (e) {
+        e.stopPropagation();
+        setMobiMenuOpen(!$mobiMenu.hasClass("active"));
     });
-    
-    $("#mobi-hamburger-close").click(function() {
-        event.stopPropagation();
-        console.log("Close clicked, removing 'active' class");
-        $("#menu-main-menu").removeClass("active");
+    $(document).on("keydown.mobiNav", function (e) {
+        if (e.key === "Escape" && $mobiMenu.hasClass("active")) {
+            setMobiMenuOpen(false);
+            $mobiToggle.trigger("focus");
+        }
+    });
+    $(window).on("resize.mobiNav", function () {
+        if (window.innerWidth > 1000 && $mobiMenu.hasClass("active")) {
+            setMobiMenuOpen(false);
+        }
     });
 
     var $projectSlider = $(".project-gallery-slider");
@@ -67,6 +102,68 @@ $(function () {
         });
         $(".project-gallery-nav-btn--next").on("click", function () {
             $projectSlider.slick("slickNext");
+        });
+    }
+
+    var $constructionSlider = $(".construction-progress-slider");
+    if ($constructionSlider.children().length > 0) {
+        $constructionSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 5000,
+            dots: false,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            speed: 900,
+            fade: true,
+            pauseOnHover: true,
+        });
+    }
+
+    var $awardsImageSlider = $(".gallery-awards-image-slider");
+    var $awardsTextSlider = $(".gallery-awards-text-slider");
+    if ($awardsImageSlider.length && $awardsTextSlider.length) {
+        $awardsImageSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 8000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: false,
+            infinite: true,
+            centerMode: true,
+            centerPadding: "14%",
+            adaptiveHeight: true,
+            asNavFor: ".gallery-awards-text-slider",
+            responsive: [
+                {
+                    breakpoint: 920,
+                    settings: {
+                        centerPadding: "10%",
+                    },
+                },
+                {
+                    breakpoint: 720,
+                    settings: {
+                        centerMode: false,
+                        centerPadding: "0px",
+                    },
+                },
+            ],
+        });
+        $awardsTextSlider.slick({
+            autoplay: true,
+            autoplaySpeed: 8000,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
+            dots: false,
+            infinite: true,
+            adaptiveHeight: true,
+            asNavFor: ".gallery-awards-image-slider",
+            prevArrow: $(".gallery-awards-slider-nav-btn--prev"),
+            nextArrow: $(".gallery-awards-slider-nav-btn--next"),
         });
     }
 

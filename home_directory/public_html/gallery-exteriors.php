@@ -2,7 +2,7 @@
 $galleryAssetBase = 'assets/gallery/exteriors';
 $galleryMosaicAriaLabel = 'Exteriors images';
 ?>
-<?php include '../includes/header.php'; ?>
+<?php include __DIR__ . '/includes/header.php'; ?>
 
 <main class="content-page content-page--gallery content-page--gallery-mosaic">
     <section class="page-hero">
@@ -13,11 +13,7 @@ $galleryMosaicAriaLabel = 'Exteriors images';
         <p>Facades, cladding, and outdoor presence of our timber frame homes.</p>
     </section>
 
-<?php include __DIR__ . '/../includes/partials/gallery-theme-mosaic.php'; ?>
-
-    <section class="page-section">
-        <p><a href="/gallery-awards">Gallery</a></p>
-    </section>
+<?php include __DIR__ . '/includes/partials/gallery-theme-mosaic.php'; ?>
 </main>
 
-<?php include '../includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>
