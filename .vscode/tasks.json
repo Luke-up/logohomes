@@ -1,0 +1,29 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "sass: build styles.css",
+      "type": "npm",
+      "script": "build:css",
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent",
+        "clear": true
+      }
+    },
+    {
+      "label": "sass: watch styles.css",
+      "type": "npm",
+      "script": "watch:css",
+      "problemMatcher": [],
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always"
+      }
+    }
+  ]
+}

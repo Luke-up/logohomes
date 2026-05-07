@@ -1,0 +1,126 @@
+@use "tokens" as *;
+
+footer {
+  background-color: #cfcfcf;
+  padding: 80px 0;
+  border-top: 4px solid var(--brand-green);
+
+  @media screen and (max-width: $bp-nav) {
+    padding: 48px 0 56px;
+  }
+
+  .footer-container {
+    color: #333333;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (max-width: $bp-nav) {
+      max-width: none;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 20px;
+    }
+
+    .footer-social-links {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      gap: 8px;
+
+      @media screen and (max-width: $bp-nav) {
+        position: static;
+        margin-bottom: 20px;
+      }
+
+      a {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #333333;
+        transition: background-color 0.3s ease-in-out;
+
+        &:hover {
+          background-color: var(--brand-green);
+        }
+      }
+    }
+
+    .footer-brand {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 12px;
+
+      img {
+        @media screen and (max-width: $bp-nav) {
+          max-width: 200px;
+          width: 100%;
+          height: auto;
+        }
+      }
+    }
+
+    .footer-affiliate-logos {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+
+      a {
+        display: inline-flex;
+      }
+
+      img {
+        max-height: 50px;
+        width: auto;
+      }
+    }
+
+    p {
+      font-family: $font-arial;
+      color: #333333;
+      margin: 0;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 0;
+      margin: 0;
+
+      &:first-of-type {
+        padding-top: 40px;
+      }
+
+      &:last-of-type {
+        padding-bottom: 40px;
+      }
+
+      li {
+        border-left: 1px solid #333333;
+        padding-left: 10px;
+
+        &:first-of-type {
+          border: none;
+          padding-left: 0;
+        }
+
+        a {
+          color: #333333;
+          text-decoration: none;
+          font-family: $font-arial;
+          font-size: 14px;
+
+          &:hover {
+            color: var(--brand-green);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "logohomes",
+  "private": true,
+  "scripts": {
+    "build:css": "sass home_directory/public_html/assets/css/styles.scss home_directory/public_html/assets/css/styles.css --style=expanded --source-map",
+    "watch:css": "sass --watch home_directory/public_html/assets/css/styles.scss:home_directory/public_html/assets/css/styles.css --style=expanded --source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.85.0"
+  }
+}
